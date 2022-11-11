@@ -1,0 +1,22 @@
+<div class="container max-w-screen-sm">
+  <renderless-template-switch
+    v-slot="{ active, show }"
+    initial="login"
+  >
+    <transition-group name="slide-from-left">
+      <div
+        v-show="active === 'login'"
+        key="login"
+      >
+        {% render 'layout-account-login' %}
+      </div>
+
+      <div
+        v-show="active === 'forgot-password'"
+        key="forgot-password"
+      >
+        {% render 'layout-account-forgot-password' %}
+      </div>
+    </transition-group>
+  </renderless-template-switch>
+</div>

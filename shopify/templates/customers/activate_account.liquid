@@ -1,0 +1,70 @@
+<div class="container max-w-screen-sm">
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-16">
+    {{ 'customer.activate_account.title' | t }}
+  </h1>
+
+  {% form 'activate_customer_password' %}
+    {% if form.errors %}
+      {% capture error_text %}
+        {{ form.errors | default_errors }}
+      {% endcapture%}
+
+      {% render 'layout-message',
+        type: 'error'
+        text: error_text
+        class: 'mb-8'
+      %}
+    {% endif %}
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="password"
+        class="block"
+      >
+        {{ 'form.password' | t }}
+      </label>
+
+      <input
+        type="password"
+        id="password"
+        name="customer[password]"
+        class="w-full"
+      >
+    </div>
+
+    <div class="mb-4 sm:mb-10">
+      <label
+        for="PasswordConfirmation"
+        class="block"
+      >
+        {{ 'form.confirm_password' | t }}
+      </label>
+
+      <input
+        type="password"
+        id="PasswordConfirmation"
+        name="customer[password_confirmation]"
+        class="w-full"
+      >
+    </div>
+
+    <div class="flex flex-wrap gap-4 sm:gap-6">
+      <button
+        type="submit"
+        class="button button-primary"
+      >
+        {{ 'action.activate' | t }}
+      </button>
+
+      <div class="w-full sm:w-auto flex justify-center items-center">
+        <button
+          type="submit"
+          name="decline"
+          class="underline"
+        >
+          {{ 'action.decline' | t }}
+        </button>
+      </div>
+    </div>
+  {% endform %}
+</div>

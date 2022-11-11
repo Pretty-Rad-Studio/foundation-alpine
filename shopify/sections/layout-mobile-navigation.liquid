@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="flex justify-between">
+    {% assign link_class = 'flex flex-col justify-center items-center text-xs text-gray-600 font-medium p-2' %}
+    {% assign icon_class = 'w-auto h-7 text-black mb-2' %}
+
+    <a
+      href="{{ routes.search_url }}"
+      class="{{ link_class }}"
+    >
+      {% render 'icon-search', class: icon_class %}
+      {{ 'action.search' | t }}
+    </a>
+
+    <a
+      href="{{ routes.cart_url }}"
+      class="{{ link_class }} relative"
+    >
+      {% render 'icon-cart', class: icon_class %}
+      {{ 'action.cart' | t }}
+
+      {% if cart.item_count > 0 %}
+        <div class="w-5 h-5 flex justify-center items-center bg-black text-white text-xs border border-white rounded-full absolute top-0 right-0">
+          {{ cart.item_count }}
+        </div>
+      {% endif %}
+    </a>
+
+    {% if shop.customer_accounts_enabled %}
+      <a
+        href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+        class="{{ link_class }}"
+      >
+        {% render 'icon-account', class: icon_class %}
+        {{ 'action.account' | t }}
+      </a>
+    {% endif %}
+
+    <button @click="$store.dispatch('mobile-menu/toggle')" class="{{ link_class }}">
+      {% render 'icon-menu', class: icon_class %}
+      {{ 'action.menu' | t }}
+    </button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.mobile-navigation.name",
+  "class": "mobile-navigation"
+}
+{% endschema %}

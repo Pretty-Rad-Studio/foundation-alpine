@@ -1,0 +1,89 @@
+{% assign image = section.settings.image %}
+
+<div class="container grid md:grid-cols-2 lg:grid-cols-3 mb-12 md:mb-24">
+  <div class="lg:col-span-2">
+    {% if image %}
+      <img
+        sizes="
+          (min-width: 1536px) 1000px,
+          (min-width: 1280px) 850px,
+          (min-width: 1024px) 700px,
+          (min-width: 768px) 400px,
+          (min-width: 640px) 500px,
+          600px
+        "
+        srcset="
+          {{ image | img_url: '400x' }} 400w,
+          {{ image | img_url: '500x' }} 500w,
+          {{ image | img_url: '600x' }} 600w,
+          {{ image | img_url: '700x' }} 700w,
+          {{ image | img_url: '850x' }} 850w,
+          {{ image | img_url: '1000x' }} 1000w
+        "
+        src="{{ image | img_url: '1000x' }}"
+        alt="{{ image.alt }}"
+        loading="lazy"
+        class="w-full h-full object-cover object-center"
+      >
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
+    {% endif %}
+  </div>
+
+  <div class="flex flex-col justify-center items-start pt-4 md:p-8">
+    <div class="text-2xl lg:text-3xl font-bold mb-2">
+      {{ section.settings.headline }}
+    </div>
+
+    <div class="mb-6">
+      {{ section.settings.text }}
+    </div>
+
+    <a href="{{ section.settings.button-url }}" class="button button-primary">
+      {{ section.settings.button-text }}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.banner.name",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:common.image"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.headline",
+      "default": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:common.text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+    },
+    {
+      "type": "url",
+      "id": "button-url",
+      "label": "t:common.button.url"
+    },
+    {
+      "type": "text",
+      "id": "button-text",
+      "label": "t:common.button.text",
+      "default": "Button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.banner.name",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

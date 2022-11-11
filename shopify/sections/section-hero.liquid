@@ -1,0 +1,87 @@
+{% assign image = section.settings.image %}
+
+<div class="container mb-12 md:mb-24">
+  <div class="w-full md:h-[500px] relative overflow-hidden">
+    {% if image %}
+      <img
+        sizes="
+          (min-width: 1280px) 1500px,
+          (min-width: 1024px) 1250px,
+          (min-width: 768px) 1000px,
+          (min-width: 640px) 720px,
+          600px
+        "
+        srcset="
+          {{ image | img_url: '600x' }} 600w,
+          {{ image | img_url: '720x' }} 720w,
+          {{ image | img_url: '1000x' }} 1000w,
+          {{ image | img_url: '1250x' }} 1250w,
+          {{ image | img_url: '1500x' }} 1500w
+        "
+        src="{{ image | img_url: '1500x' }}"
+        alt="{{ image.alt }}"
+        loading="lazy"
+        class="w-full h-full object-cover object-center"
+      >
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
+    {% endif %}
+
+    <div class="w-full md:max-w-xl md:absolute bottom-0 right-0 bg-white pt-6 md:p-6 md:mb-8 md:mr-8">
+      <div class="text-2xl lg:text-3xl font-bold mb-2">
+        {{ section.settings.headline }}
+      </div>
+
+      <div class="mb-6">
+        {{ section.settings.text }}
+      </div>
+
+      <a href="{{ section.settings.button-url }}" class="button button-primary">
+        {{ section.settings.button-text }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.hero.name",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:common.image"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.headline",
+      "default": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:common.text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+    },
+    {
+      "type": "url",
+      "id": "button-url",
+      "label": "t:common.button.url"
+    },
+    {
+      "type": "text",
+      "id": "button-text",
+      "label": "t:common.button.text",
+      "default": "Button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero.name",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

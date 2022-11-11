@@ -1,0 +1,74 @@
+<div class="container mb-12 md:mb-24">
+  <div class="max-w-screen-sm flex flex-col justify-center items-center mx-auto">
+    <div class="text-2xl lg:text-3xl font-bold text-center mb-4">
+      {{ section.settings.headline }}
+    </div>
+
+    <div class="text-center mb-8">
+      {{ section.settings.text }}
+    </div>
+
+    {% form 'customer', class: 'w-full' %}
+      {% if form.errors %}
+        {% capture error_text %}
+          {{ form.errors | default_errors }}
+        {% endcapture%}
+
+        {% render 'layout-message',
+          type: 'error'
+          text: error_text
+          class: 'mb-8'
+        %}
+      {% endif %}
+
+      {% if form.posted_successfully? %}
+        Success
+      {% endif %}
+
+      <div>
+        <input type="hidden" name="contact[tags]" value="newsletter">
+
+        <div class="flex flex-col sm:flex-row">
+          <input
+            type="email"
+            placeholder="Email"
+            name="contact[email]"
+            value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+            class="flex-1 border px-3 py-2"
+            required
+          >
+
+          <button class="button button-primary mt-2 sm:mt-0">
+            {{ 'action.subscribe' | t }}
+          </button>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.newsletter.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.headline",
+      "default": "Our newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:common.text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.newsletter.name",
+      "category": "Forms"
+    }
+  ]
+}
+{% endschema %}

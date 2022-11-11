@@ -1,0 +1,16 @@
+label:not([type="checkbox"]):not([type="radio"]) {
+  @apply text-sm sm:text-base select-none mb-2;
+}
+
+input:not([type="checkbox"]):not([type="radio"]) {
+  @apply h-12;
+}
+
+input,
+textarea {
+  @apply border rounded-sm px-3 py-2;
+}
+
+select {
+  @apply bg-white cursor-pointer;
+}

@@ -1,0 +1,10 @@
+<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+  {% for link in linklists.main-menu.links %}
+    <a
+      href="{{ link.url }}"
+      class="inline-block text-lg leading-tight border-b transition duration-150 {% if link.active %}border-black{% else %}border-transparent hover:border-black{% endif %}"
+    >
+      {{ link.title }}
+    </a>
+  {% endfor %}
+</div>

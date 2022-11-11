@@ -1,0 +1,156 @@
+<div class="border-t border-gray-200 pt-12 pb-24">
+  <div class="container grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-x-4 gap-y-8">
+    <div>
+      <div class="text-lg font-bold mb-3">
+        {{ 'footer.menu' | t }}
+      </div>
+
+      {% for link in linklists.footer.links %}
+        <div class="space-y-1">
+          <div>
+            <a
+              href="{{ link.url }}"
+              class="text-gray-600 hover:text-black transition duration-150"
+            >
+              {{ link.title }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if
+      section.settings.social_instagram_visible or
+      section.settings.social_twitter_visible or
+      section.settings.social_facebook_visible or
+      section.settings.social_youtube_visible
+    %}
+      <div>
+        <div class="text-lg font-bold mb-3">
+          {{ 'footer.social' | t }}
+        </div>
+
+        {% render 'layout-social',
+          social_instagram_visible: section.settings.social_instagram_visible
+          social_instagram_link: section.settings.social_instagram_link
+          social_twitter_visible: section.settings.social_twitter_visible
+          social_twitter_link: section.settings.social_twitter_link
+          social_facebook_visible: section.settings.social_facebook_visible
+          social_facebook_link: section.settings.social_facebook_link
+          social_youtube_visible: section.settings.social_youtube_visible
+          social_youtube_link: section.settings.social_youtube_link
+        %}
+      </div>
+    {% endif %}
+
+    {% assign enabled_locales = shop.enabled_locales | size %}
+    {% assign enabled_currencies = shop.enabled_currencies | size %}
+
+    {% if enabled_locales > 1 or enabled_currencies > 1 %}
+      <div>
+        <div class="text-lg font-bold mb-3">
+          {{ 'footer.settings' | t }}
+        </div>
+
+        <div class="flex space-x-2">
+          {% if enabled_locales > 1 %}
+            {% render 'layout-select-locale' %}
+          {% endif %}
+
+          {% if enabled_currencies > 1 %}
+            {% render 'layout-select-currency' %}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if shop.enabled_payment_types != blank %}
+      <div class="col-span-2">
+        <div class="text-lg font-bold mb-3">
+          {{ 'footer.payment_methods' | t }}
+        </div>
+
+        <div class="flex flex-wrap space-x-2">
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag: class: 'w-12 h-auto mb-2' }}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="border-t border-gray-200 py-8">
+  <div class="container text-sm text-gray-600 font-medium text-center">
+    &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header.content",
+      "info": "t:sections.footer.settings.header.info"
+    },
+    {
+      "type": "header",
+      "content": "Instagram"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_instagram_visible",
+      "label": "t:sections.footer.settings.show-icon"
+    },
+    {
+      "type": "url",
+      "id": "social_instagram_link",
+      "label": "t:common.link"
+    },
+    {
+      "type": "header",
+      "content": "Twitter"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_twitter_visible",
+      "label": "t:sections.footer.settings.show-icon"
+    },
+    {
+      "type": "url",
+      "id": "social_twitter_link",
+      "label": "t:common.link"
+    },
+    {
+      "type": "header",
+      "content": "Facebook"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_facebook_visible",
+      "label": "t:sections.footer.settings.show-icon"
+    },
+    {
+      "type": "url",
+      "id": "social_facebook_link",
+      "label": "t:common.link"
+    },
+    {
+      "type": "header",
+      "content": "Youtube"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_youtube_visible",
+      "label": "t:sections.footer.settings.show-icon"
+    },
+    {
+      "type": "url",
+      "id": "social_youtube_link",
+      "label": "t:common.link"
+    }
+  ]
+}
+{% endschema %}

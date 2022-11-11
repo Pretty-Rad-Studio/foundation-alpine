@@ -1,0 +1,13 @@
+/**
+ * entry file for Tailwind CSS
+ * and other style files
+ */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+@import "_buttons";
+@import "_forms";
+@import "_mobile-navigation";
+@import "_transitions";
+
+@import "tailwindcss/utilities";

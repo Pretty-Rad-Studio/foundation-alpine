@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="overflow-y-scroll">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preload" href="{{ 'bundle.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'bundle.js' | asset_url }}" as="script">
+
+    <title>{{ page_title | escape }}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% if canonical_url != blank %}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    {{ 'bundle.css' | asset_url | stylesheet_tag }}
+
+    <!-- header hook for Shopify plugins -->
+    {{ content_for_header }}
+  </head>
+
+  <body class="min-h-screen">
+    {% if request.page_type == 'captcha' %}
+      {% comment %}
+        fix: Shopify automatically inserts script tags on captcha pages into the content_for_layout tag
+        but vue removes any script tags on mount, so don't initialize the vue instance on captcha pages
+      {% endcomment %}
+      {% render 'template-captcha' %}
+    {% else %}
+      <div id="app" class="min-h-screen flex flex-col font-sans">
+        {% section 'layout-announcement-bar' %}
+        {% section 'layout-header' %}
+
+        <main
+          id="main"
+          role="main"
+          class="flex-1 pt-8 {% if request.page_type == 'index' %}md:pt-12{% else %}md:pt-20 pb-16 md:pb-32{% endif %}"
+        >
+          {{ content_for_layout }}
+        </main>
+
+        {% section 'layout-footer' %}
+        {% section 'layout-mobile-navigation' %}
+
+        <transition name="slide-mobile-menu">
+          {% render 'layout-mobile-menu' %}
+        </transition>
+      </div>
+    {% endif %}
+
+    <!-- webpack bundle -->
+    <script src="{{ 'bundle.js' | asset_url }}" defer="defer"></script>
+  </body>
+</html>

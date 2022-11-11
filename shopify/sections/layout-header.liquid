@@ -1,0 +1,65 @@
+<div class="bg-white border-b border-gray-200">
+  <div class="container">
+    <div class="h-20 md:h-32 flex justify-center md:justify-between items-center">
+      <a
+        href="{{ routes.root_url }}"
+        class="inline-block text-2xl lg:text-3xl font-bold"
+      >
+        {{ shop.name }}
+      </a>
+
+      <div class="hidden md:block">
+        {% render 'layout-menu', class: 'space-x-4' %}
+      </div>
+
+      {% assign link_class = 'flex flex-col justify-center items-center text-sm text-gray-600 hover:text-black font-medium transition duration-150 p-2' %}
+      {% assign icon_class = 'w-auto h-7 text-black mb-2' %}
+
+      <div class="hidden md:flex space-x-2 lg:space-x-6">
+        <a
+          href="{{ routes.search_url }}"
+          class="{{ link_class }}"
+        >
+          {% render 'icon-search', class: icon_class %}
+          {{ 'action.search' | t }}
+        </a>
+
+        {% if shop.customer_accounts_enabled %}
+          <a
+            href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+            class="{{ link_class }}"
+          >
+            {% render 'icon-account', class: icon_class %}
+            {{ 'action.account' | t }}
+          </a>
+        {% endif %}
+
+        <a
+          href="{{ routes.cart_url }}"
+          class="{{ link_class }} relative"
+        >
+          {% render 'icon-cart', class: icon_class %}
+          {{ 'action.cart' | t }}
+
+          {% if cart.item_count > 0 %}
+            <div class="w-5 h-5 flex justify-center items-center bg-black text-white text-xs border border-white rounded-full absolute top-0 right-0">
+              {{ cart.item_count }}
+            </div>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.header.settings.paragraph"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,72 @@
+<div class="container mb-12 md:mb-24">
+  <div class="grid lg:grid-cols-3 gap-4 mb-6 md:mb-12">
+    <div class="lg:col-start-2 text-2xl lg:text-3xl font-bold text-center">
+      {{ section.settings.headline }}
+    </div>
+
+    <div class="hidden lg:flex justify-end items-center">
+      <a href="{{ routes.collections_url }}" class="button button-secondary flex justify-center items-center">
+        {{ 'action.view_more' | t }} {% render 'icon-chevron-right', class: 'w-4 h-auto ml-1' style: 'margin-top: 2px;' %}
+      </a>
+    </div>
+  </div>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+    {% assign collection = collections[section.settings.collection_featured] %}
+
+    {% unless collection == blank %}
+      {% for product in collection.products limit: section.settings.collection_products_limit %}
+        {% render 'layout-product', product: product %}
+      {% endfor %}
+    {% else %}
+      {% for i in (1..4) %}
+        <div>
+          {% capture placeholder %}product-{{ i }}{% endcapture %}
+          {{ placeholder | placeholder_svg_tag: 'w-full h-full border' }}
+        </div>
+      {% endfor %}
+    {% endunless %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.collection.name",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.text",
+      "default": "Selected products"
+    },
+    {
+      "type": "collection",
+      "id": "collection_featured",
+      "label": "t:common.collection"
+    },
+    {
+      "type": "select",
+      "id": "collection_products_limit",
+      "label": "t:sections.collection.settings.max-products-to-display",
+      "default": "4",
+      "options": [
+        {
+          "value": "4",
+          "label": "t:sections.collection.settings.4-products"
+        },
+        {
+          "value": "8",
+          "label": "t:sections.collection.settings.8-products"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection.name",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

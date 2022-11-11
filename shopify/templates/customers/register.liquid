@@ -1,0 +1,112 @@
+<div class="container max-w-screen-sm">
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-16">
+    {{ 'customer.entry.create_account' | t }}
+  </h1>
+
+  {% form 'create_customer' %}
+    <input type="hidden" name="customer[tags]" value="locale={{ request.locale.iso_code }}" />
+
+    {% if form.errors %}
+      {% capture error_text %}
+        {{ form.errors | default_errors }}
+      {% endcapture%}
+
+      {% render 'layout-message',
+        type: 'error'
+        text: error_text
+        class: 'mb-8'
+      %}
+    {% endif %}
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="FirstName"
+        class="block"
+      >
+        {{ 'form.first_name' | t }}
+      </label>
+
+      <input
+        type="text"
+        id="FirstName"
+        name="customer[first_name]"
+        {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="LastName"
+        class="block"
+      >
+        {{ 'form.last_name' | t }}
+      </label>
+
+      <input
+        type="text"
+        id="LastName"
+        name="customer[last_name]"
+        {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="CustomerEmail"
+        class="block"
+      >
+        {{ 'form.email' | t }}
+      </label>
+
+      <input
+        type="email"
+        id="CustomerEmail"
+        name="customer[email]"
+        value="{% if form.email %}{{ form.email }}{% endif %}"
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="mb-4 sm:mb-10">
+      <label
+        for="CreatePassword"
+        class="block"
+      >
+        {{ 'form.password' | t }}
+      </label>
+
+      <input
+        type="password"
+        id="CreatePassword"
+        name="customer[password]"
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="flex flex-wrap gap-4 sm:gap-6">
+      <button
+        type="submit"
+        class="button button-primary"
+      >
+        {{ 'action.create_account' | t }}
+      </button>
+
+      <div class="w-full sm:w-auto flex justify-center items-center">
+        <span>{{ 'common.or' | t }}&nbsp;</span>
+
+        <a
+          href="{{ routes.root_url }}account/login"
+          class="underline"
+        >
+          {{ 'action.sign_in' | t }}
+        </a>
+      </div>
+    </div>
+  {% endform %}
+</div>

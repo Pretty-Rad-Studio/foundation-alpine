@@ -1,0 +1,164 @@
+{
+  "date_formats": {
+    "month_day_year": "%b %d, %Y"
+  },
+  "common": {
+    "or": "or",
+    "by": "by",
+    "via": "via",
+    "default": "Default",
+    "sort": "Sort",
+    "product": "Product",
+    "products": "Products",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
+    "tax": "Tax",
+    "sale": "Sale",
+    "discount": "Discount",
+    "shipping": "Shipping",
+    "sold_out": "Sold out",
+    "no_products": "No products",
+    "including_tax": "Including VAT",
+    "excluding_tax": "Excluding VAT"
+  },
+  "action": {
+    "search": "Search",
+    "cart": "Cart",
+    "account": "Account",
+    "menu": "Menu",
+    "view_more": "view more",
+    "to_search": "Search",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "log_in": "Log in",
+    "sign_in": "Sign in",
+    "create_account": "Create account",
+    "restore": "Restore",
+    "send": "Send",
+    "reset_password": "Reset password",
+    "activate": "Activate",
+    "decline": "Decline",
+    "cancel": "Cancel",
+    "close": "Close",
+    "return_to_account_overview": "Return to account overview",
+    "forgot_your_password": "Forgot your password?",
+    "log_out": "Log out",
+    "edit_addresses": "Edit Addresses",
+    "add_new_address": "Add new Address",
+    "update_address": "Update Address",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add_to_cart": "Add to cart",
+    "continue_shopping": "Continue shopping",
+    "track_shipment": "Track shipment",
+    "subscribe": "Subscribe",
+    "read_more": "Read more"
+  },
+  "form": {
+    "required": "Required fields",
+    "name": "Name",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "new_password": "New password",
+    "confirm_new_password": "Confirm new password",
+    "confirm_password": "Confirm password",
+    "company": "Company",
+    "address": "Address",
+    "apartment": "Apartment, suite, etc.",
+    "city": "City",
+    "country": "Country",
+    "zip_code": "Postal/Zip Code",
+    "phone": "Phone",
+    "message": "Message"
+  },
+  "customer": {
+    "entry": {
+      "log_in": "Log in",
+      "create_account": "Create account",
+      "reset_password_notice": "We will send you an email to reset your password.",
+      "reset_password_response": "Sent recovery mail"
+    },
+    "account": {
+      "title": "Account overview",
+      "order_history": "Order History",
+      "addresses": "Addresses",
+      "order_number": "Order Number",
+      "order_date": "Order Date",
+      "payment_status": "Payment Status",
+      "fulfillment_status": "Fulfillment Status",
+      "total": "Total",
+      "no_orders": "No orders"
+    },
+    "order": {
+      "title": "Your order",
+      "order": "Order",
+      "ordered_on": "Ordered on",
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "fulfilled_on": "Fulfilled on",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "billing_address": "Billing Address",
+      "shipping_address": "Shipping Address"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "add_new_address": "Add new Address",
+      "set_as_default_address": "Set as default Address",
+      "edit_address": "Edit Address",
+      "response": "Address updated"
+    },
+    "activate_account": {
+      "title": "Activate Account"
+    },
+    "reset_password": {
+      "title": "Reset Password"
+    }
+  },
+  "collections": {
+    "title": "Collections"
+  },
+  "cart": {
+    "title": "Cart",
+    "subtotal": "Subtotal",
+    "empty_cart": "Your cart is empty"
+  },
+  "gift_card": {
+    "title": "Gift card",
+    "value": "value",
+    "left": "left",
+    "expires": "This gift card expires on",
+    "expired": "This gift card has expired on",
+    "disabled": "This gift card is disabled",
+    "redeem": "Redeem your gift card at"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search",
+    "no_results": "No results"
+  },
+  "contact": {
+    "title": "Contact",
+    "response": "Thank you for your contact"
+  },
+  "password": {
+    "coming_soon": "Coming soon",
+    "store_owner": "Are you the store owner?"
+  },
+  "404": {
+    "title": "404 Page Not Found",
+    "text": "The page you requested does not exist."
+  },
+  "footer": {
+    "menu": "Quick links",
+    "social": "Social",
+    "settings": "Settings",
+    "payment_methods": "Payment methods"
+  }
+}
