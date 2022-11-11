@@ -9,14 +9,10 @@ const path = require('path')
 module.exports = {
   theme: {
     extend: {},
-    container: {
-      center: true,
-      padding: '1rem'
-    }
   },
   plugins: [],
   content: [
-    path.resolve(__dirname, '**/*.{js,vue}'),
+    path.resolve(__dirname, '**/*.{js}'),
     path.resolve(__dirname, '../shopify/**/*.liquid')
   ]
 }
