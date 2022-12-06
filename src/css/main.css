@@ -1,3 +1,59 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp';
+    src: url('../fonts/NHaasGroteskDSW02-55Rg.woff2') format('woff2'),
+        url('../fonts/NHaasGroteskDSW02-55Rg.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp';
+    src: url('../fonts/NeueHaasDisplay-Bold.eot');
+    src: local('../fonts/NeueHaasDisplay-Bold'),
+        url('../fonts/NeueHaasDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NeueHaasDisplay-Bold.woff2') format('woff2'),
+        url('../fonts/NeueHaasDisplay-Bold.woff') format('woff'),
+        url('../fonts/NeueHaasDisplay-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@layer components {
+    body {
+        font-size: theme('fontSize.bodyLarge');
+        background: theme('colors.white');
+        overflow-x: hidden;
+        font-family: theme('fontFamily.default');
+        font-weight: theme('fontWeight.medium');
+    }
+
+    .h1-title {
+        font-size: theme('fontSize.heading');
+        font-weight: theme('fontWeight.medium');
+        line-height: theme('lineHeight.48');
+    }
+
+    .text-body-large {
+        font-size: theme('fontSize.bodyLarge');
+        font-weight: theme('fontWeight.medium');
+        line-height: theme('lineHeight.24');
+    }
+
+    .text-body-small {
+        font-size: theme('fontSize.bodySmall');
+        font-weight: theme('fontWeight.bold');
+        line-height: theme('lineHeight.16');
+    }
+
+    .text-label {
+        font-size: theme('fontSize.label');
+        font-weight: theme('fontWeight.bold');
+        line-height: theme('lineHeight.12');
+    }
+}

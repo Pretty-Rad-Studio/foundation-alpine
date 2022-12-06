@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="preload" href="{{ 'bundle.css' | asset_url }}" as="style">
@@ -37,8 +37,8 @@
       {% endcomment %}
       {% render 'template-captcha' %}
     {% else %}
-      <div id="app" class="min-h-screen flex flex-col font-sans">
-        {% section 'layout-announcement-bar' %}
+      <div id="app" class="flex flex-col min-h-screen font-sans">
+        {% comment %} {% section 'layout-announcement-bar' %} {% endcomment %}
         {% section 'layout-header' %}
 
         <main
