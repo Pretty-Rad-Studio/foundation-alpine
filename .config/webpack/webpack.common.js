@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   stats: 'minimal',
@@ -14,17 +13,12 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm-bundler.js',
       '@': path.resolve(__dirname, '../../src/'),
       '@shopify-directory': path.resolve(__dirname, '../../shopify/')
     }
   },
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
@@ -41,9 +35,7 @@ module.exports = {
 
         const loaders = [
           { test: /\.(css|postcss)$/i },
-          { test: /\.s[ac]ss$/i, loader: 'sass-loader' },
-          { test: /\.less$/i, loader: 'less-loader' },
-          { test: /\.styl$/i, loader: 'stylus-loader' }
+          { test: /\.s[ac]ss$/i, loader: 'sass-loader' }
         ]
 
         loaders.forEach((element, index) => {
@@ -82,11 +74,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './bundle.css',
       chunkFilename: '[id].css'
-    }),
-    new VueLoaderPlugin(),
-    new webpack.DefinePlugin({
-      __VUE_OPTIONS_API__: 'true',
-      __VUE_PROD_DEVTOOLS__: 'false'
     })
   ]
 }
