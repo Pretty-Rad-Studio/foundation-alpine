@@ -17,6 +17,7 @@ module.exports = {
         'md': '100%',
         'lg': '1440px',
       },
+    },
       fontWeight: {
         light: 300,
         normal: 400,
@@ -30,12 +31,13 @@ module.exports = {
         white: '#F1F0EF',
         black: '#0C140B',
         gray: '#858985',
-        transparent: '#00000000'
+        transparent: '#00000000',
+        currentColor: 'currentColor',
       },
       fontSize: {
         'heading': ['48px', '1'],
         'headingMobile': ['32px', '1'],
-        'bodyLarge': ['16px', '1.5'],
+        'bodyLarge': ['1rem', '1.5'],
         'bodySmall': ['12px', '1.6'],
         'label': ['10px', '1.2'],
       },
@@ -70,7 +72,7 @@ module.exports = {
         inset: {
           '2': '2rem',
         }
-      },
+      
     },
     fontFamily: {
       default: ["NeueHaasGroteskDisp"],

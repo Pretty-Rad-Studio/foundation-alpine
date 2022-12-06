@@ -56,4 +56,37 @@
         font-weight: theme('fontWeight.bold');
         line-height: theme('lineHeight.12');
     }
+
+    .aeneid-navigation {
+        @apply border-b;
+        /* @apply fixed; */
+        @apply absolute;
+        @apply inset-x-0;
+        @apply z-50;
+    }
+}
+
+@layer utilities {
+    .aeneid-grid {
+        @apply grid;
+        @apply grid-cols-10;
+        @apply gap-8;
+    }
+
+    .navigation-white {
+        @apply bg-white;
+        @apply border-black;
+    }
+
+    .navigation-transparent {
+        @apply bg-transparent;
+        @apply border-white;
+        @apply text-white;
+    }
+    
+    .navigation-black {
+        @apply bg-black;
+        @apply border-0;
+        @apply text-white;
+    }
 }
