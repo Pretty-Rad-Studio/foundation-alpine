@@ -1,8 +1,13 @@
 {
   "sections": {
-   
+    "b89d81ec-709e-44ff-816a-0e47183b9aeb": {
+      "type": "section-hero",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/dark-dj-set.jpg"
+      }
+    }
   },
   "order": [
-
+    "b89d81ec-709e-44ff-816a-0e47183b9aeb"
   ]
 }

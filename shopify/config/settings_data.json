@@ -1,3 +1,22 @@
 {
-  "current": {}
+  "current": {
+    "sections": {
+      "layout-header": {
+        "type": "layout-header",
+        "settings": {
+          "nav_menu": "main-menu",
+          "info_menu": "info_menu"
+        }
+      },
+      "layout-footer": {
+        "type": "layout-footer",
+        "settings": {
+          "copyright_text": "&copy; 2022 All Rights"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  }
 }
