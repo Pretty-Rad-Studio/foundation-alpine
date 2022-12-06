@@ -26,20 +26,6 @@
     {% else %}
       {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
     {% endif %}
-
-    <div class="bottom-0 right-0 w-full pt-6 bg-white md:max-w-xl md:absolute md:p-6 md:mb-8 md:mr-8">
-      <div class="mb-2 text-2xl font-bold lg:text-3xl">
-        {{ section.settings.headline }}
-      </div>
-
-      <div class="mb-6">
-        {{ section.settings.text }}
-      </div>
-
-      <a href="{{ section.settings.button-url }}" class="button button-primary">
-        {{ section.settings.button-text }}
-      </a>
-    </div>
   </div>
 </div>
 

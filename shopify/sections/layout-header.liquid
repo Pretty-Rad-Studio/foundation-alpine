@@ -282,53 +282,27 @@
           </nav>
         </div>
         <!-- header-category list end -->
+        
         <!-- header-info list start -->
         <div class="col-span-3">
-          <div class="flex flex-col justify-start flex-grow pl-16">
-            <div class="text-white uppercase text-body-small mb-7">INFO</div>
-            <ul>
-              <li>
-                <a
-                  href="#"
-                  class="flex items-center text-white uppercase text-body-large hover:underline"
-                >
-                  SHIPPING
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex items-center text-white uppercase text-body-large hover:underline"
-                >
-                  INFORMATION
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex items-center text-white uppercase text-body-large hover:underline"
-                >
-                  PROJECTS
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex items-center text-white uppercase text-body-large hover:underline"
-                >
-                  CONTACT
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="flex items-center text-white uppercase text-body-large hover:underline"
-                >
-                  CAREERS
-                </a>
-              </li>
-            </ul>
-          </div>
+          {% if section.settings.info_menu %}
+            <div class="flex flex-col justify-start flex-grow">
+              <div class="text-white uppercase text-body-small mb-7">{{ section.settings.info_menu.title }}</div>
+
+              <ul>
+                {% for link in section.settings.info_menu.links %}
+                  <li>
+                    <a
+                      href="{{ link.url }}"
+                      class="flex items-center text-white uppercase text-body-large hover:underline"
+                    >
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
         </div>
       </div>
 
@@ -424,8 +398,14 @@
   "name": "t:sections.header.name",
   "settings": [
     {
-      "type": "paragraph",
-      "content": "t:sections.header.settings.paragraph"
+      "type": "link_list",
+      "id": "nav_menu",
+      "label": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "info_menu",
+      "label": "Info Menu"
     }
   ]
 }

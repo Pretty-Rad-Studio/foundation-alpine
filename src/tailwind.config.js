@@ -81,7 +81,7 @@ module.exports = {
   },
   plugins: [],
   content: [
-    path.resolve(__dirname, '**/*.{js}'),
+    path.resolve(__dirname, '**/*.js'),
     path.resolve(__dirname, '../shopify/**/*.liquid')
   ]
 }
