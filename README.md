@@ -18,6 +18,9 @@ cd aeneid-shopify
 
 
 ### Install dependencies
+
+Warning: Shopify recently relased v3 of their CLI. We need to use v2 however. Make sure you are installing v2: https://shopify.dev/apps/tools/cli/cli-2/install-upgrade#homebrew
+
 ```
 brew tap shopify/shopify
 brew install shopify-cli@2
