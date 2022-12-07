@@ -40,10 +40,10 @@ shopify2 version
 ### Login to Shopify
 
 ```
-shopify2 login --store=aeneid
+shopify2 login --store=aeneid-dev
 ```
 
-You should see "Logged into store aeneid.myshopify.com"
+You should see "Logged into store aeneid-dev.myshopify.com"
 
 
 ### Start the development server
