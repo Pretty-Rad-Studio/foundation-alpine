@@ -20,8 +20,7 @@ cd aeneid-shopify
 ### Install dependencies
 ```
 brew tap shopify/shopify
-
-brew install shopify-cli
+brew install shopify-cli@2
 
 npm install 
 ```
@@ -32,13 +31,13 @@ npm install
 To verify that Shopify CLI is installed properly, run the following command:
 
 ```
-shopify version
+shopify2 version
 ```
 
 ### Login to Shopify
 
 ```
-shopify login --store=aeneid
+shopify2 login --store=aeneid
 ```
 
 You should see "Logged into store aeneid.myshopify.com"
