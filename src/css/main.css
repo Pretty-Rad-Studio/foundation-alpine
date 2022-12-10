@@ -2,35 +2,17 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
-@font-face {
-    font-family: 'NeueHaasGroteskDisp';
-    src: url('../fonts/NHaasGroteskDSW02-55Rg.woff2') format('woff2'),
-        url('../fonts/NHaasGroteskDSW02-55Rg.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'NeueHaasGroteskDisp';
-    src: url('../fonts/NeueHaasDisplay-Bold.eot');
-    src: local('../fonts/NeueHaasDisplay-Bold'),
-        url('../fonts/NeueHaasDisplay-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/NeueHaasDisplay-Bold.woff2') format('woff2'),
-        url('../fonts/NeueHaasDisplay-Bold.woff') format('woff'),
-        url('../fonts/NeueHaasDisplay-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
 @layer components {
     body {
         font-size: theme('fontSize.bodyLarge');
-        background: theme('colors.white');
+        /* background: theme('colors.white'); */
         overflow-x: hidden;
-        font-family: theme('fontFamily.default');
-        font-weight: theme('fontWeight.medium');
+        /* font-family: theme('fontFamily.default');
+        font-weight: theme('fontWeight.medium'); */
+
+        @apply font-default;
+        @apply antialiased;
+        @apply font-medium;
     }
 
     .h1-title {

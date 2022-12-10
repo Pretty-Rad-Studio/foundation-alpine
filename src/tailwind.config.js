@@ -19,13 +19,10 @@ module.exports = {
       },
     },
       fontWeight: {
-        light: 300,
-        normal: 400,
-        medium: 500,
-        semibold: 600,
-        bold: 700,
-        extrabold: 800,
-        black: 900,
+        // light: 300,
+        // normal: 400,
+        medium: 600,
+        bold: 700
       },
       colors: {
         white: '#F1F0EF',
@@ -75,7 +72,7 @@ module.exports = {
       
     },
     fontFamily: {
-      default: ["NeueHaasGroteskDisp"],
+      default: ["neue-haas-grotesk-display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
     },
     extend: {},
   },
