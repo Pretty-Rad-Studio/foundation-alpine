@@ -1,0 +1,19 @@
+{% assign nav_link_class = 'mr-6 py-3 text-body-small hover:underline' %}
+
+<span class="mr-auto text-body-small">
+  © 2022 All Rights
+</span>
+
+{% for link in linklists.colophon.links %}
+  <a href="{{ link.url }}" class="{{ nav_link_class }}">
+    {{ link.title }}
+  </a>
+{% endfor %}
+
+<button class="mr-6 hover:text-opacity-85">
+  {% render 'icon-search' %}
+</button>
+
+<a href="#" class="pill pill-white">
+  Help!
+</a>

@@ -40,7 +40,7 @@
     }
 
     .aeneid-navigation {
-        @apply border-b;
+        @apply border-b-[0.5px];
         /* @apply fixed; */
         @apply absolute;
         @apply inset-x-0;
@@ -71,4 +71,21 @@
         @apply border-0;
         @apply text-white;
     }
+}
+
+
+.pill {
+    @apply flex;
+    @apply px-4;
+    @apply py-1;
+    @apply duration-200;
+    @apply rounded-full;
+    @apply text-body-small;
+    @apply hover:invert;
+
+}
+
+.pill-white {
+    @apply text-black;
+    @apply bg-white;
 }

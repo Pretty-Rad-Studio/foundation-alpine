@@ -1,0 +1,37 @@
+{% assign nav_link_class = 'uppercase mr-6 py-3 text-body-small hover:underline' %}
+
+{% if shop.customer_accounts_enabled %}
+  <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="{{ nav_link_class }}">
+    Account
+  </a>
+{% endif %}
+
+<div class="{{ nav_link_class }} relative flex py-3 group/item mr-7">
+  <span> EN (US) </span>
+
+  <ul class="absolute hidden rounded-md group/edit top-2 group-hover/item:flex">
+    <li class="p-3">
+      <button>
+        EN (US)
+      </button>
+    </li>
+
+    <li class="p-3">
+      <button>
+        EN (US)
+      </button>
+    </li>
+  </ul>
+</div>
+
+<div class="{{ nav_link_class }}">
+  USD $$$
+</div>
+
+<button class="mr-6 hover:text-opacity-85">
+  {% render 'icon-search' %}
+</button>
+
+<a href="#" class="pill pill-white">
+  Cart
+</a>
