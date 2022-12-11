@@ -1,0 +1,29 @@
+<!-- Block -->
+<div class="{{ wrapper_class }} {{ block.settings.alignment }}">
+  <h1 class="flex h1-title align-start">
+    {{ block.settings.collection.title | default: block.settings.title }}
+    
+    {% if block.settings.show_count %}
+      <span class="ml-4 text-body-large">(245)</span>
+    {% endif %}
+  </h1>
+
+  {% if block.settings.description %}
+    <p class="mt-8 mb-4 text-body-large">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+      vulputate libero et velit interdum, ac aliquet odio mattis. Class
+      aptent taciti sociosqu ad litora torquent per conubia nostra, per
+      inceptos himenaeos.
+    </p>
+  {% endif %}
+
+  {% if block.settings.button != '' %}
+    <a
+      href="{{ block.settings.collection.url }}"
+      class="inline-flex items-center px-8 py-5 duration-200 border border-currentColor text-body-large hover:bg-white hover:text-black"
+    >
+      {{ block.settings.button }}
+      {% render 'icon-button-arrow', class: 'ml-6' %}
+    </a> 
+  {% endif %}
+</div>

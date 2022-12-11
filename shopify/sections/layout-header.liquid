@@ -2,12 +2,12 @@
   assign nav_class = 'navigation-white'
 
   if request.page_type == 'index'
-    assign nav_class = 'navigation-transparent'
+    assign nav_class = 'navigation-transparent fixed'
   endif 
 %}
 
 <header
-  class="header aeneid-navigation fixed {{ request.page_type }}"
+  class="header aeneid-navigation {{ request.page_type }}"
   :class="openNavigate ? 'navigation-black' : '{{ nav_class }}'"
   id="header"
   x-data="{ openNavigate: false }"
