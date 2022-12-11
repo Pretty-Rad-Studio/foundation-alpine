@@ -50,9 +50,12 @@
 
 @layer utilities {
     .aeneid-grid {
+        @apply px-4;
+        @apply md:px-12;
         @apply grid;
         @apply grid-cols-10;
         @apply gap-8;
+        @apply m-auto;
     }
 
     .navigation-white {

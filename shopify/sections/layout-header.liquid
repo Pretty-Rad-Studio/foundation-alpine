@@ -14,10 +14,9 @@
   @click.away="openNavigate = false"
 >
   <div
-    class="px-4 m-auto md:px-12"
+    class="m-auto"
     :class="{ '' : openNavigate }"
   >
-    <!-- top nav menu start -->
     <nav class="items-center py-3 aeneid-grid">
       <div class="col-span-2">
         <button
@@ -42,8 +41,7 @@
         {% render 'nav-account' %}
       </div>
     </nav>
-    <!-- top nav menu end -->
-  </div>
+
 
   <div data-target="header-menu" x-show="openNavigate">
     <div class="py-3 pt-6 aeneid-grid">
@@ -207,7 +205,8 @@
         </nav>
       </div>
       <!-- header-category list end -->
-      
+
+     
       <!-- header-info list start -->
       <div class="col-span-3">
         {% if linklists.info_menu %}
@@ -229,12 +228,16 @@
           </div>
         {% endif %}
       </div>
-    </div>
-
+  
+      
+</div>
+<div class="px-4 md:px-12">
     <nav class="flex items-center justify-end flex-grow py-6">
       {% render 'nav-footer' %}
     </nav>
-  </div>
+ 
+    
+</div>
 </header>
 
 <!-- 
