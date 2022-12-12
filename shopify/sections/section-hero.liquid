@@ -1,33 +1,18 @@
 {% assign image = section.settings.image %}
 
-<div class="container mb-12 md:mb-24 bg-gray">
-  <div class="w-full md:h-[500px] relative overflow-hidden">
-    {% if image %}
-      <img
-        sizes="
-          (min-width: 1280px) 1500px,
-          (min-width: 1024px) 1250px,
-          (min-width: 768px) 1000px,
-          (min-width: 640px) 720px,
-          600px
-        "
-        srcset="
-          {{ image | img_url: '600x' }} 600w,
-          {{ image | img_url: '720x' }} 720w,
-          {{ image | img_url: '1000x' }} 1000w,
-          {{ image | img_url: '1250x' }} 1250w,
-          {{ image | img_url: '1500x' }} 1500w
-        "
-        src="{{ image | img_url: '1500x' }}"
-        alt="{{ image.alt }}"
-        loading="lazy"
-        class="object-cover object-center w-full h-full"
-      >
-    {% else %}
-      {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
-    {% endif %}
+<section
+  class="flex items-center bg-center bg-no-repeat bg-cover hero min-h-[780px] bg-hero-pattern"
+  style="background-image: url('{{ image | img_url: '1500x' }}');"
+>
+  <div class="text-white aeneid-grid">
+    <div class="col-span-4 col-start-3">
+      {% for block in section.blocks %}
+        {% render 'featured-collection-block', block: block, class: 'flex flex-col' %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+</section>
+    
 
 {% schema %}
 {
@@ -37,6 +22,65 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Featured Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_count",
+          "label": "Show collection size",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Leave empty to use collection name.",
+          "default": "New Arrivals"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button",
+          "label": "Button Text",
+          "default": "Shop Now",
+          "info": "Leave empty to hide button"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "items-start",
+              "label": "left"
+            },
+            {
+              "value": "items-center",
+              "label": "center"
+            },
+            {
+              "value": "items-end",
+              "label": "right"
+            }
+          ],
+          "default": "items-center"
+        }
+
+      ]
     }
   ],
   "presets": [

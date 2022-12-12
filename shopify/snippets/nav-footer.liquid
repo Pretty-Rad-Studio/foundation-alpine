@@ -1,0 +1,25 @@
+{% assign nav_link_class = 'mr-6 py-3 text-body-small hover:underline hidden lg:inline' %}
+
+<span class="mr-auto text-body-small">
+  © 2022 All Rights
+</span>
+
+{% for link in linklists.colophon.links %}
+  <a href="{{ link.url }}" class="{{ nav_link_class }}">
+    {{ link.title }}
+  </a>
+{% endfor %}
+
+<button class="mr-6 hover:text-opacity-85 hidden lg:flex">
+  {% render 'icon-search' %}
+</button>
+
+<div class="hidden lg:flex">
+  <a href="#" class="pill pill-white ">
+    Help!
+  </a>
+</div>
+
+<a href="{{ routes.root_url }}" class="w-[4.5rem] md:w-[6rem] lg:w-[9rem] header-logo flex lg:hidden">
+  {% render 'logo' %}
+</a>

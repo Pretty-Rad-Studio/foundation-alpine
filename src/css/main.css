@@ -2,35 +2,13 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
-@font-face {
-    font-family: 'NeueHaasGroteskDisp';
-    src: url('../fonts/NHaasGroteskDSW02-55Rg.woff2') format('woff2'),
-        url('../fonts/NHaasGroteskDSW02-55Rg.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'NeueHaasGroteskDisp';
-    src: url('../fonts/NeueHaasDisplay-Bold.eot');
-    src: local('../fonts/NeueHaasDisplay-Bold'),
-        url('../fonts/NeueHaasDisplay-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/NeueHaasDisplay-Bold.woff2') format('woff2'),
-        url('../fonts/NeueHaasDisplay-Bold.woff') format('woff'),
-        url('../fonts/NeueHaasDisplay-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
 @layer components {
     body {
         font-size: theme('fontSize.bodyLarge');
-        background: theme('colors.white');
         overflow-x: hidden;
-        font-family: theme('fontFamily.default');
-        font-weight: theme('fontWeight.medium');
+        @apply font-default;
+        @apply antialiased;
+        @apply font-medium;
     }
 
     .h1-title {
@@ -58,8 +36,7 @@
     }
 
     .aeneid-navigation {
-        @apply border-b;
-        /* @apply fixed; */
+        @apply border-b-[0.5px];
         @apply absolute;
         @apply inset-x-0;
         @apply z-50;
@@ -68,9 +45,83 @@
 
 @layer utilities {
     .aeneid-grid {
-        @apply grid;
-        @apply grid-cols-10;
+        @apply px-4;
+        @apply md:px-12;
         @apply gap-8;
+        @apply m-auto;
+        @apply grid;
+        grid-template-columns: theme('gridTemplateColumns.grid-10');
+    }
+
+    .aeneid-product-greed {
+        @apply grid;
+        @apply auto-rows-auto;
+        @apply items-center;
+        @apply py-10;
+        grid-template-columns: theme('gridTemplateColumns.grid-6');
+    }
+    .aeneid-product-card {
+        @apply  relative;
+        @apply  flex;
+        @apply  flex-col;
+        @apply  w-full;
+        @apply  items-center;
+        @apply  justify-start;
+        @apply  overflow-hidden;
+        @apply  flex-grow;
+    }
+
+    .aeneid-pagination-item {
+        @apply w-8;
+        @apply h-8;
+        @apply rounded-full;
+        @apply flex;
+        @apply items-center;
+        @apply justify-center;
+        @apply duration-200;
+        @apply truncate mx-1;
+    }
+
+    .pagination-item-current {
+        @apply rounded-full;
+        @apply border;
+    }
+
+    .aeneid-pagination-nav {
+        @apply text-body-small;
+        @apply col-span-10;
+        @apply flex;
+        @apply flex-col;
+        @apply items-center;
+        @apply justify-center;
+        @apply justify-self-stretch;
+        @apply px-4;
+        @apply py-2;
+        @apply px-12;
+    }
+
+    .btn-disabled {
+        @apply cursor-not-allowed;
+        @apply pointer-events-none;
+        @apply text-opacity-75;
+        touch-action: none;
+    }
+
+    .product-image-wrapper {
+        @apply relative;
+        @apply w-full;
+        padding-top: 123%;
+        @apply bg-white;
+    }
+
+    .product-image {
+        @apply absolute;
+        @apply h-full;
+        @apply object-contain;
+        @apply -translate-y-1/2;
+        @apply -translate-x-1/2;
+        top: 50%;
+        left: 50%;
     }
 
     .navigation-white {
@@ -83,10 +134,45 @@
         @apply border-white;
         @apply text-white;
     }
-    
+
     .navigation-black {
         @apply bg-black;
         @apply border-0;
         @apply text-white;
+    }
+
+    .header-nav-links .hide {
+        @apply hidden;
+    }
+}
+
+.pill {
+    @apply flex;
+    @apply px-4;
+    @apply py-1;
+    @apply duration-200;
+    @apply rounded-full;
+    @apply text-body-small;
+    @apply hover:invert;
+
+}
+
+.pill-white {
+    @apply text-black;
+    @apply bg-white;
+}
+
+.header-logo svg {
+    @apply w-full;
+    @apply h-full;
+}
+
+@screen lg {
+    .header-nav-links .text-body-small {
+        @apply block;
+    }
+
+    .aeneid-product-greed {
+        grid-template-columns: theme('gridTemplateColumns.grid-10');
     }
 }

@@ -18,66 +18,77 @@ module.exports = {
         'lg': '1440px',
       },
     },
-      fontWeight: {
-        light: 300,
-        normal: 400,
-        medium: 500,
-        semibold: 600,
-        bold: 700,
-        extrabold: 800,
-        black: 900,
+    fontWeight: {
+      // light: 300,
+      // normal: 400,
+      medium: 600,
+      bold: 700
+    },
+    gridTemplateColumns: {
+      'product-greed-10': 'repeat(10, minmax(90px, 1fr))',
+      'product-greed-5': 'repeat(10 , 1fr)',
+      'product-greed-2': 'repeat(2, minmax(130px, 1fr))',
+      'product-greed-3': 'repeat(3, minmax(147px, 1fr))',
+      'product-greed-3-mobile': 'repeat(auto-fill, minmax(125px, 1fr))',
+      'product-greed-2-mobile': 'repeat(auto-fill, minmax(145px, 1fr))',
+      'product-greed-4': 'repeat(4, minmax(147px, 1fr))',
+      'grid-10': 'repeat(10, 1fr)',
+      'grid-6': 'repeat(6, 1fr)',
+    },
+    colors: {
+      white: '#F1F0EF',
+      black: '#0C140B',
+      gray: '#858985',
+      transparent: '#00000000',
+      currentColor: 'currentColor',
+    },
+    fontSize: {
+      'heading': ['48px', '1'],
+      'headingMobile': ['32px', '1'],
+      'bodyLarge': ['1rem', '1.5'],
+      'bodySmall': ['12px', '1.6'],
+      'label': ['10px', '1.2'],
+    },
+    lineHeight: {
+      '48': '3rem',
+      '32': '2rem',
+      '24': '1.5rem',
+      '16': '1rem',
+      '12': '0.75rem'
+    },
+    boxShadow: {
+      default: "box-shadow: 0px 8px 48px rgba(0, 0, 0, 0.08);",
+    },
+    blur: {
+      default: '32px',
+    },
+    screens: {
+      'xs': '375px',
+      'sm': '575px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
+    extend: {
+      transitionProperty: {
+        'backgroundColor': 'background',
+        'opacity': 'opacity',
       },
-      colors: {
-        white: '#F1F0EF',
-        black: '#0C140B',
-        gray: '#858985',
-        transparent: '#00000000',
-        currentColor: 'currentColor',
+      transitionDuration: {
+        '0': '0ms',
+        '300': '300ms',
       },
-      fontSize: {
-        'heading': ['48px', '1'],
-        'headingMobile': ['32px', '1'],
-        'bodyLarge': ['1rem', '1.5'],
-        'bodySmall': ['12px', '1.6'],
-        'label': ['10px', '1.2'],
+      textOpacity: {
+        '85': '0.85',
       },
-      lineHeight: {
-        '48': '3rem',
-        '32': '2rem',
-        '24': '1.5rem',
-        '16': '1rem',
-        '12': '0.75rem'
-      },
-      boxShadow: {
-        default: "box-shadow: 0px 8px 48px rgba(0, 0, 0, 0.08);",
-      },
-      blur: {
-        default: '32px',
-      },
-      extend: {
-        transitionProperty: {
-          'backgroundColor': 'background',
-          'opacity': 'opacity',
-        },
-        transitionDuration: {
-          '0': '0ms',
-          '300': '300ms',
-        },
-        textOpacity: {
-          '85': '0.85',
-        },
-        backgroundImage: theme => ({
-          'hero-pattern': "url('../images/Hero.png')",
-        }),
-        inset: {
-          '2': '2rem',
-        }
-      
+      inset: {
+        '2': '2rem',
+      }
     },
     fontFamily: {
-      default: ["NeueHaasGroteskDisp"],
+      default: ["neue-haas-grotesk-display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
     },
-    extend: {},
   },
   plugins: [],
   content: [

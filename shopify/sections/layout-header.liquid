@@ -2,389 +2,259 @@
   assign nav_class = 'navigation-white'
 
   if request.page_type == 'index'
-    assign nav_class = 'navigation-transparent'
+    assign nav_class = 'navigation-transparent fixed'
   endif 
 %}
 
 <header
-  class="header aeneid-navigation fixed {{ request.page_type }}"
-  :class="openNavigate ? 'navigation-black' : '{{ nav_class }}'"
+  class="header aeneid-navigation max-h-screen overflow-y-auto {{ request.page_type }} {{ nav_class }}"
+  :class="{'navigation-black' : openNavigate , 'navigation-white' : !openNavigate && pageScrolled, 'navigation-transparent' : !openNavigate && !pageScrolled }"
   id="header"
-  x-data="{ openNavigate: false }"
+  x-data="{ openNavigate: false, pageScrolled: false }"
   @click.away="openNavigate = false"
+  @scroll.window="pageScrolled = (window.pageYOffset > 20) ? true : false"
 >
   <div
-    class="px-4 m-auto md:px-12"
+    class="m-auto px-4 md:px-12"
     :class="{ '' : openNavigate }"
   >
-    <!-- top nav menu start -->
     <nav class="items-center py-3 aeneid-grid">
-      <div class="col-span-2">
+      <div class="col-span-3 lg:col-span-2">
         <button
-          class="flex items-center py-2 font-bold hover:underline"
+          class="flex items-center py-2 font-medium hover:underline"
           @click="openNavigate = !openNavigate"
         >
           <span class="menu-closed" :class="{ 'hidden' : openNavigate }">Menu</span>
           <span class="menu-opened" :class="{ 'hidden' : !openNavigate }">Close Menu</span>
         </button>
       </div>
-      <div class="col-span-3">
+      <div class="col-span-4 flex justify-center lg:col-span-3 lg:justify-start">
         <a
           href="{{ routes.root_url }}"
-          class="block pl-7"
+          class="block w-[4.5rem] md:w-[6rem] lg:w-[9rem] header-logo"
           :class="{ 'hidden' : openNavigate }"
         >
           {% render 'logo' %}
         </a>
       </div>
 
-      <div class="col-span-5">
-        <div class="flex items-center justify-end flex-grow pr-3">
-          <a
-            href="#"
-            class="flex py-3 mt-4 mr-4 uppercase text-body-small mr-7 hover:underline lg:mt-0"
-          >
-            ACCOUNT
-          </a>
+      <div class="col-span-3 lg:col-span-5">
+        <div class="flex flex-grow items-center justify-end pr-3 header-nav-links">
+          {% render 'nav-account' %}
+        </div>
+      </div>
+    </nav>
+
+
+  <div data-target="header-menu" x-show="openNavigate">
+    <div class="py-3 pt-6 aeneid-grid sm:grid-rows-auto">
+      <div class="col-span-2 hidden md:block">
+        <a href="{{ routes.root_url }}" class="mr-6 w-[4.5rem] md:w-[6rem] lg:w-[9rem] header-logo">
+          {% render 'logo' %}
+        </a>
+      </div>
+
+      <!-- header-category list start -->
+      <div class="col-span-10 sm:col-span-5">
+        <nav class="mr-6 flex flex-col lg:pl-20">
           <div
-            class="relative flex py-3 mt-4 mr-4 uppercase text-body-small group/item mr-7 hover:underline lg:mt-0"
+            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            @click="handleClick"
           >
-            <span> EN (US) </span>
+            <a href="#" class="flex items-center">
+              <div
+                class="w-8 h-8 flex-shrink-0 duration-300  border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+              ></div>
+              <span class="text-white ml-7 text-headingMobile lg:text-heading">
+                New Arrivals
+              </span>
+            </a>
             <ul
-              class="absolute flex flex-col hidden rounded-md group/edit top-2 group-hover/item:flex"
+              class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
             >
-              <li
-                class="p-3 uppercase text-body-small hover:underline"
-              >
-                <button
-                  class="flex uppercase text-body-small hover:underline"
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  FOR THE HOME (30 Items)</a
                 >
-                  EN (US)
-                </button>
               </li>
-              <li
-                class="p-3 uppercase text-body-small hover:underline"
-              >
-                <button
-                  class="flex uppercase text-body-small hover:underline"
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  BY THE GRACE OF GOD (27 Items)</a
                 >
-                  EN (US)
-                </button>
               </li>
             </ul>
           </div>
           <div
-            class="flex py-3 mt-4 mr-4 uppercase text-body-small mr-7 hover:underline lg:mt-0"
+            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            @click="handleClick"
           >
-            USD $$$
+            <a href="#" class="flex items-center">
+              <div
+                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+              ></div>
+              <span class="text-white ml-7 text-headingMobile lg:text-heading"> Mens </span>
+            </a>
+            <ul
+              class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
+            >
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  FOR THE HOME (30 Items)</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  BY THE GRACE OF GOD (27 Items)</a
+                >
+              </li>
+            </ul>
           </div>
-          <button
-            class="flex items-center rounded mr-7 hover:text-opacity-85"
+          <div
+            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            @click="handleClick"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <a href="#" class="flex items-center">
+              <div
+                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+              ></div>
+              <span class="text-white ml-7 text-headingMobile lg:text-heading"> Womens </span>
+            </a>
+            <ul
+              class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
             >
-              <path
-                d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-                stroke="#F1F0EF"
-                stroke-width="2"
-                stroke-linecap="square"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M21.0004 20.9999L16.6504 16.6499"
-                stroke="#F1F0EF"
-                stroke-width="2"
-                stroke-linecap="square"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-          <a
-            href="#"
-            class="flex px-4 py-1 text-black duration-200 rounded-full text-body-small hover:invert"
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  FOR THE HOME (30 Items)</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  BY THE GRACE OF GOD (27 Items)</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            @click="handleClick"
           >
-            Cart
-          </a>
+            <a href="#" class="flex items-center">
+              <div
+                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+              ></div>
+              <span class="text-white ml-7 text-headingMobile lg:text-heading">
+                Accessories
+              </span>
+            </a>
+            <ul
+              class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
+            >
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  FOR THE HOME (30 Items)</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  BY THE GRACE OF GOD (27 Items)</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            @click="handleClick"
+          >
+            <a href="#" class="flex items-center">
+              <div
+                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+              ></div>
+              <span class="text-white ml-7 text-headingMobile lg:text-heading"> Home Goods </span>
+            </a>
+            <ul
+              class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
+            >
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  FOR THE HOME (30 Items)</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  BY THE GRACE OF GOD (27 Items)</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            @click="handleClick"
+          >
+            <a href="#" class="flex items-center">
+              <div
+                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+              ></div>
+              <span class="text-white ml-7 text-headingMobile lg:text-heading"> Sale </span>
+            </a>
+            <ul
+              class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
+            >
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  FOR THE HOME (30 Items)</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-body-large">
+                  BY THE GRACE OF GOD (27 Items)</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <!-- header-category list end -->
+
+
+      <!-- header-info list start -->
+      <div class="col-span-10 flex md:col-span-3">
+        {% if linklists.info_menu %}
+          <div class="flex w-1/2 flex-grow flex-col justify-start items-start md:pl-16">
+            <div class="text-white uppercase text-body-small mb-4">{{ linklists.info_menu.title }}</div>
+
+            <ul>
+              {% for link in linklists.info_menu.links %}
+                <li>
+                  <a
+                    href="{{ link.url }}"
+                    class="flex items-center text-white uppercase text-body-large hover:underline"
+                  >
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        <div class="flex w-1/2 flex-grow flex-col justify-start items-start md:pl-16 md:hidden">
+          <div class="text-body-small mb-4 uppercase text-white">
+            YOUR ACCOUNT
+          </div>
+          {% render 'nav-account' %}
         </div>
       </div>
+</div>
+<div class="px-4 md:px-12">
+    <nav class="flex flex-grow flex-wrap items-end justify-between px-4 py-4 md:items-center md:px-12 ">
+      {% render 'nav-footer' %}
     </nav>
-    <!-- top nav menu end -->
-
-    <!-- bottom menu start -->
-    <div
-      data-target="header-menu"
-      x-show="openNavigate"
-    >
-      <!-- dropdown menu start -->
-      <div class="py-3 pt-6 aeneid-grid">
-        <div class="col-span-2">
-          <a href="{{ routes.root_url }}">
-            {% render 'logo' %}
-          </a>
-        </div>
-
-        <!-- header-category list start -->
-        <div class="col-span-5">
-          <nav class="flex flex-col">
-            <div
-              class="block mt-4 mr-4 text-teal-200 group/item hover:text-white lg:mt-0 lg:inline-block"
-            >
-              <a href="#" class="flex items-center">
-                <div
-                  class="w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
-                ></div>
-                <span class="text-white ml-7 text-heading">
-                  New Arrivals
-                </span>
-              </a>
-              <ul
-                class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
-              >
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    FOR THE HOME (30 Items)</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    BY THE GRACE OF GOD (27 Items)</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div
-              class="block mt-4 mr-4 text-teal-200 group/item hover:text-white lg:mt-0 lg:inline-block"
-            >
-              <a href="#" class="flex items-center">
-                <div
-                  class="w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
-                ></div>
-                <span class="text-white ml-7 text-heading"> Mens </span>
-              </a>
-              <ul
-                class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
-              >
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    FOR THE HOME (30 Items)</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    BY THE GRACE OF GOD (27 Items)</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div
-              class="block mt-4 mr-4 text-teal-200 group/item hover:text-white lg:mt-0 lg:inline-block"
-            >
-              <a href="#" class="flex items-center">
-                <div
-                  class="w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
-                ></div>
-                <span class="text-white ml-7 text-heading"> Womens </span>
-              </a>
-              <ul
-                class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
-              >
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    FOR THE HOME (30 Items)</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    BY THE GRACE OF GOD (27 Items)</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div
-              class="block mt-4 mr-4 text-teal-200 group/item hover:text-white lg:mt-0 lg:inline-block"
-            >
-              <a href="#" class="flex items-center">
-                <div
-                  class="w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
-                ></div>
-                <span class="text-white ml-7 text-heading">
-                  Accessories
-                </span>
-              </a>
-              <ul
-                class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
-              >
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    FOR THE HOME (30 Items)</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    BY THE GRACE OF GOD (27 Items)</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div
-              class="block mt-4 mr-4 text-teal-200 group/item hover:text-white lg:mt-0 lg:inline-block"
-            >
-              <a href="#" class="flex items-center">
-                <div
-                  class="w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
-                ></div>
-                <span class="text-white ml-7 text-heading"> Home Goods </span>
-              </a>
-              <ul
-                class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
-              >
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    FOR THE HOME (30 Items)</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    BY THE GRACE OF GOD (27 Items)</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div
-              class="block mt-4 mr-4 text-teal-200 group/item hover:text-white lg:mt-0 lg:inline-block"
-            >
-              <a href="#" class="flex items-center">
-                <div
-                  class="w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
-                ></div>
-                <span class="text-white ml-7 text-heading"> Sale </span>
-              </a>
-              <ul
-                class="flex-col hidden pb-8 mt-6 group/edit ml-14 group-hover/item:flex"
-              >
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    FOR THE HOME (30 Items)</a
-                  >
-                </li>
-                <li>
-                  <a href="#" class="text-white text-body-large">
-                    BY THE GRACE OF GOD (27 Items)</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <!-- header-category list end -->
-        
-        <!-- header-info list start -->
-        <div class="col-span-3">
-          {% if section.settings.info_menu %}
-            <div class="flex flex-col justify-start flex-grow">
-              <div class="text-white uppercase text-body-small mb-7">{{ section.settings.info_menu.title }}</div>
-
-              <ul>
-                {% for link in section.settings.info_menu.links %}
-                  <li>
-                    <a
-                      href="{{ link.url }}"
-                      class="flex items-center text-white uppercase text-body-large hover:underline"
-                    >
-                      {{ link.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-        </div>
-      </div>
-
-  
-      <!-- header-info list end -->
-      <!-- header-bottom block start -->
-      <nav
-        class="flex flex-wrap items-center justify-between flex-grow p-3"
-      >
-        <span
-          class="flex items-center px-3 py-2 text-white text-body-small"
-        >
-          © 2022 All Rights
-        </span>
-        <div class="flex items-center justify-end text-sm lg:flex-grow">
-          <a
-            href="#"
-            class="flex mt-4 mr-4 mr-6 text-white text-body-small hover:underline lg:mt-0"
-          >
-            Powered by Shopify
-          </a>
-          <a
-            href="#"
-            class="flex mt-4 mr-4 mr-6 text-white text-body-small hover:underline lg:mt-0"
-          >
-            Policies
-          </a>
-          <a
-            href="#"
-            class="flex mt-4 mr-4 mr-6 text-white text-body-small hover:underline lg:mt-0"
-          >
-            Terms
-          </a>
-          <button class="flex items-center text-black rounded mr-7">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                class="group/edit group-hover/item:stroke-black"
-                d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-                stroke="#F1F0EF"
-                stroke-width="2"
-                stroke-linecap="square"
-                stroke-linejoin="round"
-              />
-              <path
-                class="group/edit group-hover/item:stroke-black"
-                d="M21.0004 20.9999L16.6504 16.6499"
-                stroke="#F1F0EF"
-                stroke-width="2"
-                stroke-linecap="square"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-          <a
-            href="#"
-            class="flex px-4 py-1 text-black duration-200 bg-white rounded-full text-body-small hover:invert"
-          >
-            Help!
-          </a>
-        </div>
-      </nav>
-      <!-- header-bottom block end -->
-  
-    <!-- dropdown menu end -->
-  </div>
-  <!-- bottom menu end -->
+</div>
 </header>
 
 <!-- 
 {{ shop.name }}
 
 {{ routes.search_url }}
-
-{% if shop.customer_accounts_enabled %}
-{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}
-{% endif %}
 
 {{ routes.cart_url }}
 
@@ -401,12 +271,8 @@
       "type": "link_list",
       "id": "nav_menu",
       "label": "Navigation"
-    },
-    {
-      "type": "link_list",
-      "id": "info_menu",
-      "label": "Info Menu"
     }
   ]
 }
 {% endschema %}
+
