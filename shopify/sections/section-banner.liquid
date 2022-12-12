@@ -1,82 +1,121 @@
 {% assign image = section.settings.image %}
 
-<div class="container grid md:grid-cols-2 lg:grid-cols-3 mb-12 md:mb-24">
-  <div class="lg:col-span-2">
-    {% if image %}
-      <img
-        sizes="
-          (min-width: 1536px) 1000px,
-          (min-width: 1280px) 850px,
-          (min-width: 1024px) 700px,
-          (min-width: 768px) 400px,
-          (min-width: 640px) 500px,
-          600px
-        "
-        srcset="
-          {{ image | img_url: '400x' }} 400w,
-          {{ image | img_url: '500x' }} 500w,
-          {{ image | img_url: '600x' }} 600w,
-          {{ image | img_url: '700x' }} 700w,
-          {{ image | img_url: '850x' }} 850w,
-          {{ image | img_url: '1000x' }} 1000w
-        "
-        src="{{ image | img_url: '1000x' }}"
-        alt="{{ image.alt }}"
-        loading="lazy"
-        class="w-full h-full object-cover object-center"
-      >
+<section 
+  class="flex text-white bg-center bg-no-repeat bg-cover"
+  style="background-image: url('{{ image | img_url: '1000x' }}');">
+
+  {% for block in section.blocks %}
+    {% if block.type == 'collection' %}
+      <div class="basis-1/2 flex py-14 px-12 {{ block.settings.alignment }}">
+        {% render 'featured-collection-block', block: block, class: 'flex flex-col' %}
+      </div>
     {% else %}
-      {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
+      <div class="flex-1 basis-1/2">
+        <img
+          sizes="
+            (min-width: 1536px) 1000px,
+            (min-width: 1280px) 850px,
+            (min-width: 1024px) 700px,
+            (min-width: 768px) 400px,
+            (min-width: 640px) 500px,
+            600px
+          "
+          srcset="
+            {{ block.settings.image | img_url: '400x' }} 400w,
+            {{ block.settings.image | img_url: '500x' }} 500w,
+            {{ block.settings.image | img_url: '600x' }} 600w,
+            {{ block.settings.image | img_url: '700x' }} 700w,
+            {{ block.settings.image | img_url: '850x' }} 850w,
+            {{ block.settings.image | img_url: '1000x' }} 1000w
+          "
+          src="{{ block.settings.image | img_url: '1000x' }}"
+          alt="{{ block.settings.image.alt }}"
+          loading="lazy"
+          class="object-cover object-center w-full h-full mix-blend-lighten"
+        >
+      </div>
     {% endif %}
-  </div>
-
-  <div class="flex flex-col justify-center items-start pt-4 md:p-8">
-    <div class="text-2xl lg:text-3xl font-bold mb-2">
-      {{ section.settings.headline }}
-    </div>
-
-    <div class="mb-6">
-      {{ section.settings.text }}
-    </div>
-
-    <a href="{{ section.settings.button-url }}" class="button button-primary">
-      {{ section.settings.button-text }}
-    </a>
-  </div>
-</div>
+  {% endfor %}
+</section>
 
 {% schema %}
 {
-  "name": "t:sections.banner.name",
-  "class": "shopify-section-vue",
+  "name": "Banner",
   "settings": [
     {
       "type": "image_picker",
       "id": "image",
       "label": "t:common.image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image Overlay",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
     },
     {
-      "type": "text",
-      "id": "headline",
-      "label": "t:common.headline",
-      "default": "Headline"
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "t:common.text",
-      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
-    },
-    {
-      "type": "url",
-      "id": "button-url",
-      "label": "t:common.button.url"
-    },
-    {
-      "type": "text",
-      "id": "button-text",
-      "label": "t:common.button.text",
-      "default": "Button"
+      "type": "collection",
+      "name": "Featured Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_count",
+          "label": "Show collection size",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Leave empty to use collection name.",
+          "default": "New Arrivals"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button",
+          "label": "Button Text",
+          "default": "Shop Now",
+          "info": "Leave empty to hide button"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "items-start",
+              "label": "left"
+            },
+            {
+              "value": "items-center",
+              "label": "center"
+            },
+            {
+              "value": "items-end",
+              "label": "right"
+            }
+          ],
+          "default": "items-center"
+        }
+
+      ]
     }
   ],
   "presets": [

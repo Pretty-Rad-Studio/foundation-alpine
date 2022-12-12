@@ -1,78 +1,8 @@
-<footer class="pt-20 pb-4 footer">
-  <div class="px-4 m-auto md:px-8">
-    <nav class="items-center px-4 py-3 aeneid-grid">
-      <div class="col-span-2">
-        <span class="flex items-center px-3 py-2 text-black text-body-small">
-          {{ section.settings.copyright_text }}
-        </span>
-      </div>
-      <div class="col-span-3">
-        {% render 'logo' %}
-      </div>
-      <div class="flex items-center justify-end col-span-5 text-sm">
-        <ul class="flex">
-          <li>
-            <a
-              href="#"
-              class="flex mt-4 mr-6 text-black text-body-small hover:underline lg:mt-0"
-            >
-              Powered by Shopify
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex mt-4 mr-6 text-black text-body-small hover:underline lg:mt-0"
-            >
-              Policies
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex mt-4 mr-6 text-black text-body-small hover:underline lg:mt-0"
-            >
-              Terms
-            </a>
-          </li>
-        </ul>
-        <button class="flex items-center text-black rounded group/item mr-7">
-          <svg
-            width="24"
-            height="25"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              class="group/edit group-hover/item:opacity-85"
-              d="M11 19.5005C15.4183 19.5005 19 15.9188 19 11.5005C19 7.08221 15.4183 3.50049 11 3.50049C6.58172 3.50049 3 7.08221 3 11.5005C3 15.9188 6.58172 19.5005 11 19.5005Z"
-              stroke="#0C140B"
-              stroke-width="2"
-              stroke-linecap="square"
-              stroke-linejoin="round"
-            />
-            <path
-              class="group/edit group-hover/item:opacity-85"
-              d="M21.0004 21.5004L16.6504 17.1504"
-              stroke="#0C140B"
-              stroke-width="2"
-              stroke-linecap="square"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <a
-          href="#"
-          class="flex px-4 py-1 text-white duration-200 bg-black border rounded-full text-body-small hover:invert"
-        >
-          Help!
-        </a>
-      </div>
-    </nav>
-  </div>
+<footer class="px-12 pt-20 pb-4 footer">
+  <nav class="flex flex-wrap items-end justify-between flex-grow py-4 md:items-center">
+    {% render 'nav-footer' %}
+  </nav>
 </footer>
-
 
 
 {% schema %}

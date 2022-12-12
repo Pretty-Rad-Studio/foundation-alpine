@@ -2,13 +2,17 @@
   assign nav_class = 'navigation-white'
 
   if request.page_type == 'index'
-    assign nav_class = 'navigation-transparent fixed'
+    assign nav_class = 'navigation-transparent'
   endif 
 %}
 
 <header
-  class="header aeneid-navigation max-h-screen overflow-y-auto {{ request.page_type }} {{ nav_class }}"
-  :class="{'navigation-black' : openNavigate , 'navigation-white' : !openNavigate && pageScrolled, 'navigation-transparent' : !openNavigate && !pageScrolled }"
+  class="header aeneid-navigation max-h-screen overflow-y-auto fixed {{ request.page_type }}"
+  :class="{ 
+    'navigation-black' : openNavigate, 
+    'navigation-white' : !openNavigate && pageScrolled, 
+    '{{ nav_class }}' : !openNavigate && !pageScrolled 
+  }"
   id="header"
   x-data="{ openNavigate: false, pageScrolled: false }"
   @click.away="openNavigate = false"
