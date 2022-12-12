@@ -1,0 +1,35 @@
+<section class="py-24 aeneid-grid border-b-[0.5px]">
+  <div class="text-center col-span-full">
+    <h3 class="h3-title">{{ section.settings.headline }}</h3>
+  </div>
+  <div class="text-center col-span-full">
+
+    <a
+        href="#"
+        class="inline-flex items-center px-8 py-5 duration-200 border border-currentColor text-body-large hover:bg-white hover:text-black"
+      >
+        View all articles
+        {% render 'icon-button-arrow', class: 'ml-6' %}
+      </a> 
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.text",
+      "default": "Editorial Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article Grid",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

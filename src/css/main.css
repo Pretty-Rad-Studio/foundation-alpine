@@ -9,12 +9,23 @@
         @apply font-default;
         @apply antialiased;
         @apply font-medium;
+        @apply bg-white;
     }
 
     .h1-title {
         font-size: theme('fontSize.heading');
-        font-weight: theme('fontWeight.medium');
+        /* font-weight: theme('fontWeight.medium'); */
         line-height: theme('lineHeight.48');
+        @apply font-bold;
+
+    }
+
+    .h3-title {
+        @apply uppercase;
+        @apply inline-block;
+        @apply border-b-[0.5px];
+        @apply pb-2;
+        /* @apply mx-auto; */
     }
 
     .text-body-large {
@@ -25,13 +36,13 @@
 
     .text-body-small {
         font-size: theme('fontSize.bodySmall');
-        font-weight: theme('fontWeight.bold');
+        @apply font-bold;
         line-height: theme('lineHeight.16');
     }
 
     .text-label {
         font-size: theme('fontSize.label');
-        font-weight: theme('fontWeight.bold');
+        @apply font-bold;
         line-height: theme('lineHeight.12');
     }
 
@@ -175,4 +186,23 @@
     .aeneid-product-greed {
         grid-template-columns: theme('gridTemplateColumns.grid-10');
     }
+}
+
+/* 
+* 
+* BUTTONS
+* 
+*/
+.button {
+    @apply flex;
+    @apply items-center;
+    @apply justify-between;
+    @apply w-full;
+    @apply py-4;
+    @apply text-body-small;
+    @apply px-7;
+    @apply text-black;
+    @apply border-black;
+    @apply border;
+    @apply duration-200;
 }
