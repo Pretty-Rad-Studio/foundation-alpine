@@ -5,7 +5,8 @@
       "layout-header": {
         "type": "layout-header",
         "settings": {
-          "nav_menu": "main-menu"
+          "nav_menu": "collections",
+          "info_menu": "info_menu"
         }
       },
       "layout-footer": {

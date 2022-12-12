@@ -21,9 +21,55 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/dark-dj-set.jpg"
       }
+    },
+    "b9c0de25-d238-4299-b8fc-4442449a3c9b": {
+      "type": "section-banner",
+      "blocks": {
+        "0b4d8fdd-0094-442a-be28-d139df3af286": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/c4f0455c50e07f9125f9a844b333b7f5.png"
+          }
+        },
+        "265bac78-116b-4f76-b86f-4ac6e6b20599": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "show_count": true,
+            "title": "New Arrivals",
+            "description": "",
+            "button": "Shop Now",
+            "alignment": "items-end"
+          }
+        }
+      },
+      "block_order": [
+        "0b4d8fdd-0094-442a-be28-d139df3af286",
+        "265bac78-116b-4f76-b86f-4ac6e6b20599"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/9bda942f8c00452d43903dce89e12b2d.png"
+      }
+    },
+    "88856741-cffa-44a4-b1a8-edc874b86b3e": {
+      "type": "section-editorial-grid",
+      "settings": {
+        "headline": "Editorial Content"
+      }
+    },
+    "9ae78481-4eba-4b19-a82a-564d7a026768": {
+      "type": "section-collection",
+      "settings": {
+        "headline": "Selected products",
+        "collection_featured": "all",
+        "collection_products_limit": "4"
+      }
     }
   },
   "order": [
-    "b89d81ec-709e-44ff-816a-0e47183b9aeb"
+    "b89d81ec-709e-44ff-816a-0e47183b9aeb",
+    "b9c0de25-d238-4299-b8fc-4442449a3c9b",
+    "88856741-cffa-44a4-b1a8-edc874b86b3e",
+    "9ae78481-4eba-4b19-a82a-564d7a026768"
   ]
 }
