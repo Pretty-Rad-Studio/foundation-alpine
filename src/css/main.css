@@ -161,11 +161,11 @@
     @apply text-black;
     @apply bg-white;
 }
-
+/* 
 .header-logo svg {
     @apply w-full;
     @apply h-full;
-}
+} */
 
 @screen lg {
     .header-nav-links .text-body-small {
