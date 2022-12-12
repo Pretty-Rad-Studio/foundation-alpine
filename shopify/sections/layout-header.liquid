@@ -15,7 +15,7 @@
   @scroll.window="pageScrolled = (window.pageYOffset > 20) ? true : false"
 >
   <div
-    class="m-auto px-4 md:px-12"
+    class="px-4 m-auto md:px-12"
     :class="{ '' : openNavigate }"
   >
     <nav class="items-center py-3 aeneid-grid">
@@ -28,7 +28,7 @@
           <span class="menu-opened" :class="{ 'hidden' : !openNavigate }">Close Menu</span>
         </button>
       </div>
-      <div class="col-span-4 flex justify-center lg:col-span-3 lg:justify-start">
+      <div class="flex justify-center col-span-4 lg:col-span-3 lg:justify-start">
         <a
           href="{{ routes.root_url }}"
           class="block w-[4.5rem] md:w-[6rem] lg:w-[9rem] header-logo"
@@ -39,7 +39,7 @@
       </div>
 
       <div class="col-span-3 lg:col-span-5">
-        <div class="flex flex-grow items-center justify-end pr-3 header-nav-links">
+        <div class="flex items-center justify-end flex-grow pr-3 header-nav-links">
           {% render 'nav-account' %}
         </div>
       </div>
@@ -48,7 +48,7 @@
 
   <div data-target="header-menu" x-show="openNavigate">
     <div class="py-3 pt-6 aeneid-grid sm:grid-rows-auto">
-      <div class="col-span-2 hidden md:block">
+      <div class="hidden col-span-2 md:block">
         <a href="{{ routes.root_url }}" class="mr-6 w-[4.5rem] md:w-[6rem] lg:w-[9rem] header-logo">
           {% render 'logo' %}
         </a>
@@ -56,14 +56,14 @@
 
       <!-- header-category list start -->
       <div class="col-span-10 sm:col-span-5">
-        <nav class="mr-6 flex flex-col lg:pl-20">
+        <nav class="flex flex-col mr-6 lg:pl-20">
           <div
-            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            class="block mb-4 group/item lg:mb-0 lg:inline-block"
             @click="handleClick"
           >
             <a href="#" class="flex items-center">
               <div
-                class="w-8 h-8 flex-shrink-0 duration-300  border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+                class="flex-shrink-0 w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
               ></div>
               <span class="text-white ml-7 text-headingMobile lg:text-heading">
                 New Arrivals
@@ -85,12 +85,12 @@
             </ul>
           </div>
           <div
-            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            class="block mb-4 group/item lg:mb-0 lg:inline-block"
             @click="handleClick"
           >
             <a href="#" class="flex items-center">
               <div
-                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+                class="flex-shrink-0 w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
               ></div>
               <span class="text-white ml-7 text-headingMobile lg:text-heading"> Mens </span>
             </a>
@@ -110,12 +110,12 @@
             </ul>
           </div>
           <div
-            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            class="block mb-4 group/item lg:mb-0 lg:inline-block"
             @click="handleClick"
           >
             <a href="#" class="flex items-center">
               <div
-                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+                class="flex-shrink-0 w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
               ></div>
               <span class="text-white ml-7 text-headingMobile lg:text-heading"> Womens </span>
             </a>
@@ -135,12 +135,12 @@
             </ul>
           </div>
           <div
-            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            class="block mb-4 group/item lg:mb-0 lg:inline-block"
             @click="handleClick"
           >
             <a href="#" class="flex items-center">
               <div
-                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+                class="flex-shrink-0 w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
               ></div>
               <span class="text-white ml-7 text-headingMobile lg:text-heading">
                 Accessories
@@ -162,12 +162,12 @@
             </ul>
           </div>
           <div
-            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            class="block mb-4 group/item lg:mb-0 lg:inline-block"
             @click="handleClick"
           >
             <a href="#" class="flex items-center">
               <div
-                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+                class="flex-shrink-0 w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
               ></div>
               <span class="text-white ml-7 text-headingMobile lg:text-heading"> Home Goods </span>
             </a>
@@ -187,12 +187,12 @@
             </ul>
           </div>
           <div
-            class="group/item mb-4 block lg:mb-0 lg:inline-block"
+            class="block mb-4 group/item lg:mb-0 lg:inline-block"
             @click="handleClick"
           >
             <a href="#" class="flex items-center">
               <div
-                class="w-8 h-8 flex-shrink-0 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
+                class="flex-shrink-0 w-8 h-8 duration-300 border border-white rounded-full group/edit transition-backgroundColor group-hover/item:bg-white"
               ></div>
               <span class="text-white ml-7 text-headingMobile lg:text-heading"> Sale </span>
             </a>
@@ -217,10 +217,10 @@
 
 
       <!-- header-info list start -->
-      <div class="col-span-10 flex md:col-span-3">
+      <div class="flex col-span-10 md:col-span-3">
         {% if linklists.info_menu %}
-          <div class="flex w-1/2 flex-grow flex-col justify-start items-start md:pl-16">
-            <div class="text-white uppercase text-body-small mb-4">{{ linklists.info_menu.title }}</div>
+          <div class="flex flex-col items-start justify-start flex-grow w-1/2 md:pl-16">
+            <div class="mb-4 text-white uppercase text-body-small">{{ linklists.info_menu.title }}</div>
 
             <ul>
               {% for link in linklists.info_menu.links %}
@@ -236,8 +236,8 @@
             </ul>
           </div>
         {% endif %}
-        <div class="flex w-1/2 flex-grow flex-col justify-start items-start md:pl-16 md:hidden">
-          <div class="text-body-small mb-4 uppercase text-white">
+        <div class="flex flex-col items-start justify-start flex-grow w-1/2 md:pl-16 md:hidden">
+          <div class="mb-4 text-white uppercase text-body-small">
             YOUR ACCOUNT
           </div>
           {% render 'nav-account' %}
@@ -245,7 +245,7 @@
       </div>
 </div>
 <div class="px-4 md:px-12">
-    <nav class="flex flex-grow flex-wrap items-end justify-between px-4 py-4 md:items-center md:px-12 ">
+    <nav class="flex flex-wrap items-end justify-between flex-grow px-4 py-4 md:items-center md:px-12 ">
       {% render 'nav-footer' %}
     </nav>
 </div>

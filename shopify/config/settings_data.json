@@ -1,11 +1,11 @@
 {
   "current": {
+    "login_image": "shopify:\/\/shop_images\/train-passes-high-street.jpg",
     "sections": {
       "layout-header": {
         "type": "layout-header",
         "settings": {
-          "nav_menu": "main-menu",
-          "info_menu": "info_menu"
+          "nav_menu": "main-menu"
         }
       },
       "layout-footer": {

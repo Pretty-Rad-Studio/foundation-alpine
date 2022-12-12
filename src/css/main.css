@@ -79,7 +79,7 @@
         @apply items-center;
         @apply justify-center;
         @apply duration-200;
-        @apply truncate mx-1;
+        @apply mx-1 truncate;
     }
 
     .pagination-item-current {
