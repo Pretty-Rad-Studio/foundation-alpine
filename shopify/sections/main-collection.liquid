@@ -1,14 +1,38 @@
-<div class="container">
-  <h1 class="mb-6 text-2xl font-bold text-center md:text-3xl md:mb-16">
-    {{ collection.title }}
-  </h1>
+<section class="py-24 aeneid-grid">
+  <div class="col-span-2">
+    <div class="flex items-center">
+      <a href="" class="pl-3 pr-1 text-black text-body-small">HOME</a> /<a href="#" class="pl-1 pr-1 text-black text-body-small">{{ collection.title }}</a>
+    </div>
+  </div>
 
-  {% if collection.description != blank %}
-    <p class="max-w-screen-sm mx-auto mb-6 md:-mt-6 md:mb-12">
+  <div class="col-span-4">
+    <h2 class="flex h1-title align-start">
+      {{ collection.title }}
+      <span class="ml-4 text-body-large">({{ collection | size }})</span>
+    </h2>
+
+    {% if collection.description %}
+      <p class="mt-8 mb-4 text-body-large">
       {{ collection.description }}
-    </p>
-  {% endif %}
+      </p>
+    {% endif %}
+  </div>
 
+  <div class="col-span-2">
+    <button class="button">
+      SHOW FILTERS
+    </button>
+  </div>
+  
+  <div class="col-span-2">
+    <button class="button">
+      SORT BY
+    </button>
+  </div>
+</section>
+
+
+<div class="container">
   {% paginate collection.products by 50 %}
     {% if collection and collection.products %}
       {% assign amount = collection.all_products_count %}
