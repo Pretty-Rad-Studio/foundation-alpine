@@ -1,57 +1,51 @@
-<h1>Content Template</h1>
-
-<h1>{{ page.title }}</h1>
-
-{% for block in section.blocks %}
-    {% case block.type %}
-        {% when 'header' %}
-            {% include 'header' %}
-        {% when 'section-header' %}
-            {% include 'section-header' %}
-        {% when 'text-block' %}
-            {% include 'text-block' %}
-    {% endcase %}
+{% for section in settings.sections %}
+  {% case 'font-style' %}
+    {% when 'header' %}
+      <div class="py-28 px-4 flex-none self-stretch font-medium" style="font-size: 32px; line-height: 32px;">{{ section.settings.text-block-text }}</div>
+    {% when 'section-header' %}
+      <div class="font-medium text-base flex-auto items-center">{{ section.settings.text-block-text }}</div>
+    {% when 'small-header' %}
+      <div class="p-4 flex-none self-stretch font-bold" style="font-size: 10px; line-height: 12px;">{{ section.settings.text-block-text }}</div>
+    {% when 'body-text' %}
+      <div class="p-4 flex-auto flex-row justify-end items-center self-stretch font-medium text-base">{{ section.settings.text-block-text }}</div>
+  {% endcase %}
 {% endfor %}
+
+
 
 {% schema %} 
     {
       "name": "Content",
-      "blocks": [
-                  {
-                    "type": "header",
-                    "name": "Header",
-                    "settings": [
-                      {
-                        "type": "text",
-                        "id": "header-text",
-                        "label": "Page Header",
-                        "default": "Content",
-                        "info": "Will display on the top of the page"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "section-header",
-                    "name": "Section Header",
-                    "settings": [
-                        {
-                          "type": "text",
-                          "id": "section-header-text",
-                          "label": "Section Header"
-                        }
-                    ]
-                  },
-                  {
-                    "type": "text-block",
-                    "name": "Text Block",
-                    "settings": [
-                        {
-                            "type": "text",
-                            "id": "text-block-text",
-                            "label": "Text Block"
-                        }
-                    ]
-                  }
-              ]
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text-block-text",
+          "label": "Text Block"
+        },
+        {
+          "type": "select",
+          "id": "font-style",
+          "label": "Font Style",
+          "options": [
+            {
+              "value": "header",
+              "label": "Header"
+            },
+            {
+              "value": "section-header",
+              "label": "Section Header"
+            },
+            {
+              "value": "small-header",
+              "label": "Small Header"
+            },
+            {
+              "value": "body-text",
+              "label": "Body Text"
+            }
+          ],
+          "default": "body-text"
+        }
+      ]
     }
   {% endschema %}
