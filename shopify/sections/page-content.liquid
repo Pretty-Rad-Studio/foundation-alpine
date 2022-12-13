@@ -1,18 +1,25 @@
-{% for section in settings.sections %}
-  {% case 'font-style' %}
+{% for block in section.blocks %}
+  {% assign content = block.settings.text-block-text %}
+ 
+  {% case block.settings.font_style %}
     {% when 'header' %}
-      <div class="self-stretch flex-none px-4 font-medium py-28" style="font-size: 32px; line-height: 32px;">{{ section.settings.text-block-text }}</div>
+      <div class="self-stretch flex-none px-4 font-medium py-28" style="font-size: 32px; line-height: 32px;">
+        {{ content }}
+      </div>
     {% when 'section-header' %}
-      <div class="items-center flex-auto text-base font-medium">{{ section.settings.text-block-text }}</div>
+      <div class="items-center flex-auto text-base font-medium">
+        {{ content }}
+      </div>
     {% when 'small-header' %}
-      <div class="self-stretch flex-none p-4 font-bold" style="font-size: 10px; line-height: 12px;">{{ section.settings.text-block-text }}</div>
+      <div class="self-stretch flex-none p-4 font-bold" style="font-size: 10px; line-height: 12px;">
+        {{ content }}
+      </div>
     {% when 'body-text' %}
-      <div class="flex-row items-center self-stretch justify-end flex-auto p-4 text-base font-medium">{{ section.settings.text-block-text }}</div>
+      <div class="flex-row items-center self-stretch justify-end flex-auto p-4 text-base font-medium ">
+        {{ content }}
+      </div>
   {% endcase %}
 {% endfor %}
-
-
-
 
 {% schema %} 
   {
@@ -29,7 +36,7 @@
           },
           {
             "type": "select",
-            "id": "font-style",
+            "id": "font_style",
             "label": "Font Style",
             "options": [
               {
