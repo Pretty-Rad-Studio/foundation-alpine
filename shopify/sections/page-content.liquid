@@ -3,19 +3,26 @@
  
   {% case block.settings.font_style %}
     {% when 'header' %}
-      <div class="self-stretch flex-none px-4 font-medium py-28" style="font-size: 32px; line-height: 32px;">
+
+      <div class="misc-header" style="font-size: 32px; line-height: 32px;">
         {{ content }}
       </div>
+
     {% when 'section-header' %}
-      <div class="items-center flex-auto text-base font-medium">
+
+      <div class="misc-scection-header" href="#{{ block.settings.sectionReference }}">
         {{ content }}
       </div>
+
     {% when 'small-header' %}
-      <div class="self-stretch flex-none p-4 font-bold" style="font-size: 10px; line-height: 12px;">
+
+      <div id="{{ block.settings.referenceId }}" class="misc-small-header">
         {{ content }}
       </div>
+
     {% when 'body-text' %}
-      <div class="flex-row items-center self-stretch justify-end flex-auto p-4 text-base font-medium ">
+
+      <div class="misc-body-text">
         {{ content }}
       </div>
   {% endcase %}
@@ -63,3 +70,39 @@
     ]
   }
   {% endschema %}
+
+<style>
+
+@media screen and (min-width: 769px){
+  .misc-header {
+    padding: 7rem 1rem;
+    display: block;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+  }
+  .misc-section-directory {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .misc-section-header {
+    padding: 0 1rem 1rem;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0 1rem 1rem 1rem;
+  }
+  .misc-small-header{
+    font-size: 10px; 
+    line-height: 12px;
+    font-weight: 700;
+    padding: 0 1rem 1rem 1rem
+  }
+  .misc-body-text{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    text-indent: 3rem;
+    color: red;
+}
+</style>
