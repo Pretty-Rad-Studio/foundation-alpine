@@ -1,0 +1,53 @@
+{% for block in section.blocks %}
+    {% case block.type %}
+        {% when 'header' %}
+            {% include 'header' %}
+        {% when 'section-header' %}
+            {% include 'section-header' %}
+        {% when 'text-block' %}
+            {% include 'text-block' %}
+    {% endcase %}
+{% endfor %}
+
+{% schema %} 
+    {
+      "name": "Content",
+      "blocks": [
+                  {
+                    "type": "header",
+                    "name": "Header",
+                    "settings": [
+                      {
+                        "type": "text",
+                        "id": "header-text",
+                        "label": "Page Header",
+                        "default": "Content",
+                        "info": "Will display on the top of the page"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section-header",
+                    "name": "Section Header",
+                    "settings": [
+                        {
+                          "type": "text",
+                          "id": "section-header-text",
+                          "label": "Section Header"
+                        }
+                    ]
+                  },
+                  {
+                    "type": "text-block",
+                    "name": "Text Block",
+                    "settings": [
+                        {
+                            "type": "text",
+                            "id": "text-block-text",
+                            "label": "Text Block"
+                        }
+                    ]
+                  }
+              ]
+    }
+  {% endschema %}
