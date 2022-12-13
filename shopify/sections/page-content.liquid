@@ -1,51 +1,58 @@
 {% for section in settings.sections %}
   {% case 'font-style' %}
     {% when 'header' %}
-      <div class="py-28 px-4 flex-none self-stretch font-medium" style="font-size: 32px; line-height: 32px;">{{ section.settings.text-block-text }}</div>
+      <div class="self-stretch flex-none px-4 font-medium py-28" style="font-size: 32px; line-height: 32px;">{{ section.settings.text-block-text }}</div>
     {% when 'section-header' %}
-      <div class="font-medium text-base flex-auto items-center">{{ section.settings.text-block-text }}</div>
+      <div class="items-center flex-auto text-base font-medium">{{ section.settings.text-block-text }}</div>
     {% when 'small-header' %}
-      <div class="p-4 flex-none self-stretch font-bold" style="font-size: 10px; line-height: 12px;">{{ section.settings.text-block-text }}</div>
+      <div class="self-stretch flex-none p-4 font-bold" style="font-size: 10px; line-height: 12px;">{{ section.settings.text-block-text }}</div>
     {% when 'body-text' %}
-      <div class="p-4 flex-auto flex-row justify-end items-center self-stretch font-medium text-base">{{ section.settings.text-block-text }}</div>
+      <div class="flex-row items-center self-stretch justify-end flex-auto p-4 text-base font-medium">{{ section.settings.text-block-text }}</div>
   {% endcase %}
 {% endfor %}
 
 
 
+
 {% schema %} 
-    {
-      "name": "Content",
-      "settings": [
-        {
-          "type": "textarea",
-          "id": "text-block-text",
-          "label": "Text Block"
-        },
-        {
-          "type": "select",
-          "id": "font-style",
-          "label": "Font Style",
-          "options": [
-            {
-              "value": "header",
-              "label": "Header"
-            },
-            {
-              "value": "section-header",
-              "label": "Section Header"
-            },
-            {
-              "value": "small-header",
-              "label": "Small Header"
-            },
-            {
-              "value": "body-text",
-              "label": "Body Text"
-            }
-          ],
-          "default": "body-text"
-        }
-      ]
-    }
+  {
+    "name": "Content",
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text Block",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "text-block-text",
+            "label": "Text Block"
+          },
+          {
+            "type": "select",
+            "id": "font-style",
+            "label": "Font Style",
+            "options": [
+              {
+                "value": "header",
+                "label": "Header"
+              },
+              {
+                "value": "section-header",
+                "label": "Section Header"
+              },
+              {
+                "value": "small-header",
+                "label": "Small Header"
+              },
+              {
+                "value": "body-text",
+                "label": "Body Text"
+              }
+            ],
+            "default": "body-text"
+          }
+        ]
+      }
+    ]
+  }
   {% endschema %}
