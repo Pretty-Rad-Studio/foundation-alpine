@@ -1,57 +1,108 @@
-<h1>Content Template</h1>
-
-<h1>{{ page.title }}</h1>
-
 {% for block in section.blocks %}
-    {% case block.type %}
-        {% when 'header' %}
-            {% include 'header' %}
-        {% when 'section-header' %}
-            {% include 'section-header' %}
-        {% when 'text-block' %}
-            {% include 'text-block' %}
-    {% endcase %}
+  {% assign content = block.settings.text-block-text %}
+ 
+  {% case block.settings.font_style %}
+    {% when 'header' %}
+
+      <div class="misc-header" style="font-size: 32px; line-height: 32px;">
+        {{ content }}
+      </div>
+
+    {% when 'section-header' %}
+
+      <div class="misc-scection-header" href="#{{ block.settings.sectionReference }}">
+        {{ content }}
+      </div>
+
+    {% when 'small-header' %}
+
+      <div id="{{ block.settings.referenceId }}" class="misc-small-header">
+        {{ content }}
+      </div>
+
+    {% when 'body-text' %}
+
+      <div class="misc-body-text">
+        {{ content }}
+      </div>
+  {% endcase %}
 {% endfor %}
 
 {% schema %} 
-    {
-      "name": "Content",
-      "blocks": [
-                  {
-                    "type": "header",
-                    "name": "Header",
-                    "settings": [
-                      {
-                        "type": "text",
-                        "id": "header-text",
-                        "label": "Page Header",
-                        "default": "Content",
-                        "info": "Will display on the top of the page"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "section-header",
-                    "name": "Section Header",
-                    "settings": [
-                        {
-                          "type": "text",
-                          "id": "section-header-text",
-                          "label": "Section Header"
-                        }
-                    ]
-                  },
-                  {
-                    "type": "text-block",
-                    "name": "Text Block",
-                    "settings": [
-                        {
-                            "type": "text",
-                            "id": "text-block-text",
-                            "label": "Text Block"
-                        }
-                    ]
-                  }
-              ]
-    }
+  {
+    "name": "Content",
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text Block",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "text-block-text",
+            "label": "Text Block"
+          },
+          {
+            "type": "select",
+            "id": "font_style",
+            "label": "Font Style",
+            "options": [
+              {
+                "value": "header",
+                "label": "Header"
+              },
+              {
+                "value": "section-header",
+                "label": "Section Header"
+              },
+              {
+                "value": "small-header",
+                "label": "Small Header"
+              },
+              {
+                "value": "body-text",
+                "label": "Body Text"
+              }
+            ],
+            "default": "body-text"
+          }
+        ]
+      }
+    ]
+  }
   {% endschema %}
+
+<style>
+
+@media screen and (min-width: 769px){
+  .misc-header {
+    padding: 7rem 1rem;
+    display: block;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 32px;
+  }
+  .misc-section-directory {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .misc-section-header {
+    padding: 0 1rem 1rem;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0 1rem 1rem 1rem;
+  }
+  .misc-small-header{
+    font-size: 10px; 
+    line-height: 12px;
+    font-weight: 700;
+    padding: 0 1rem 1rem 1rem
+  }
+  .misc-body-text{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    text-indent: 3rem;
+    color: red;
+}
+</style>
