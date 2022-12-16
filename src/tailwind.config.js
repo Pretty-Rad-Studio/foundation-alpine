@@ -20,9 +20,9 @@ module.exports = {
     },
     fontWeight: {
       // light: 300,
-      // normal: 400,
-      medium: 600,
-      bold: 700
+      // roman: 500,
+      'medium': 600,
+      'bold': 700
     },
     gridTemplateColumns: {
       'product-greed-10': 'repeat(10, minmax(90px, 1fr))',
@@ -62,13 +62,16 @@ module.exports = {
     blur: {
       default: '32px',
     },
-    screens: {
-      'xs': '375px',
-      'sm': '575px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+    // screens: {
+    //   'xs': '375px',
+    //   'sm': '575px',
+    //   'md': '768px',
+    //   'lg': '1024px',
+    //   'xl': '1280px',
+    //   '2xl': '1536px',
+    // },
+    fontFamily: {
+      default: ["neue-haas-grotesk-display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
     },
     extend: {
       transitionProperty: {
@@ -86,9 +89,7 @@ module.exports = {
         '2': '2rem',
       }
     },
-    fontFamily: {
-      default: ["neue-haas-grotesk-display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
-    },
+
   },
   plugins: [],
   content: [

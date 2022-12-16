@@ -64,12 +64,17 @@
         "collection_featured": "all",
         "collection_products_limit": "4"
       }
+    },
+    "style": {
+      "type": "section-style"
     }
+
   },
   "order": [
     "b89d81ec-709e-44ff-816a-0e47183b9aeb",
     "b9c0de25-d238-4299-b8fc-4442449a3c9b",
     "88856741-cffa-44a4-b1a8-edc874b86b3e",
-    "9ae78481-4eba-4b19-a82a-564d7a026768"
+    "9ae78481-4eba-4b19-a82a-564d7a026768",
+    "style"
   ]
 }
