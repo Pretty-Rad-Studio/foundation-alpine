@@ -59,6 +59,10 @@ module.exports = {
     boxShadow: {
       default: "box-shadow: 0px 8px 48px rgba(0, 0, 0, 0.08);",
     },
+    borderWidth: {
+      DEFAULT: '0.5px',
+      '0': '0'
+    },
     blur: {
       default: '32px',
     },

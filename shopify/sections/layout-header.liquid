@@ -7,7 +7,7 @@
 %}
 
 <header
-  class="header aeneid-navigation max-h-screen overflow-y-auto fixed {{ request.page_type }}"
+  class="aeneid-navigation {{ request.page_type }}"
   :class="{ 
     'navigation-black' : openNavigate, 
     'navigation-white' : !openNavigate && pageScrolled, 
@@ -19,20 +19,19 @@
   @scroll.window="pageScrolled = (window.pageYOffset > 20) ? true : false"
 >
   <!-- TOP NAV -->
-  <nav class="items-center py-3 aeneid-grid">
+  <nav class="items-center h-16 aeneid-grid">
     <div class="col-span-3 lg:col-span-2">
       <button
         class="flex items-center py-2 font-medium hover:underline"
         @click="openNavigate = !openNavigate"
       >
-        <span class="menu-closed" :class="{ 'hidden' : openNavigate }">Menu</span>
-        <span class="menu-opened" :class="{ 'hidden' : !openNavigate }">Close Menu</span>
+        <span x-text="openNavigate ? 'Close Menu' : 'Menu'">Menu</span>
       </button>
     </div>
     <div class="flex justify-center col-span-4 lg:col-span-3 lg:justify-start">
       <a
         href="{{ routes.root_url }}"
-        class="block w-[4.5rem] md:w-[6rem] lg:w-[9rem] header-logo"
+        class="block header-logo"
         :class="{ 'hidden' : openNavigate }"
       >
         {% render 'icon-logo', class: 'h-5 lg:h-10' %}
