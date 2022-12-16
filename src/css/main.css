@@ -4,11 +4,10 @@
 
 @layer components {
     body {
-        font-size: theme('fontSize.bodyLarge');
-        overflow-x: hidden;
+        @apply text-base;
+        @apply font-medium;
         @apply font-default;
         @apply antialiased;
-        @apply font-medium;
         @apply bg-white;
     }
 
@@ -99,7 +98,7 @@
     }
 
     .aeneid-pagination-nav {
-        @apply text-body-small;
+        @apply text-sm;
         @apply col-span-10;
         @apply flex;
         @apply flex-col;
@@ -163,7 +162,7 @@
     @apply py-1;
     @apply duration-200;
     @apply rounded-full;
-    @apply text-body-small;
+    @apply text-sm;
     @apply hover:invert;
 
 }

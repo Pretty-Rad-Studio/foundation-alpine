@@ -43,19 +43,19 @@ module.exports = {
       currentColor: 'currentColor',
     },
     fontSize: {
-      'heading': ['48px', '1'],
-      'headingMobile': ['32px', '1'],
-      'bodyLarge': ['1rem', '1.5'],
-      'bodySmall': ['12px', '1.6'],
-      'label': ['10px', '1.2'],
+      'xl': ['3rem', '1'], // 48px
+      'lg': ['2rem', '1'], // 32px
+      'base': ['1rem', '1.5'], // 16px
+      'sm': ['0.75rem', '1.6'], // 12px
+      'xs': ['0.625rem', '1.2'], // 10px
     },
-    lineHeight: {
-      '48': '3rem',
-      '32': '2rem',
-      '24': '1.5rem',
-      '16': '1rem',
-      '12': '0.75rem'
-    },
+    // lineHeight: {
+    //   '48': '3rem',
+    //   '32': '2rem',
+    //   '24': '1.5rem',
+    //   '16': '1rem',
+    //   '12': '0.75rem'
+    // },
     boxShadow: {
       default: "box-shadow: 0px 8px 48px rgba(0, 0, 0, 0.08);",
     },
