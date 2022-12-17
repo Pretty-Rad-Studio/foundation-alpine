@@ -256,7 +256,7 @@
     }
 
     .slider-collections-label {
-        @apply text-body-large;
+        @apply text-base;
         @apply uppercase;
         @apply mb-6;
         @apply max-w-[175px];
@@ -305,7 +305,7 @@
 
     .slider-content-label {
         @apply rounded-full;
-        @apply text-label;
+        @apply text-xs;
         @apply text-black;
         @apply bg-white;
         @apply mr-1;
@@ -316,7 +316,7 @@
     }
 
     .slider-content-text {
-        @apply text-label;
+        @apply text-xs;
         @apply text-white uppercase;
         @apply duration-300;
         @apply  w-1/2;
@@ -342,7 +342,7 @@
     }
 
     .slider-content-top-title {
-        @apply text-body-large;
+        @apply text-base;
         @apply  text-white;
         @apply uppercase;
         @apply w-full;
@@ -374,7 +374,7 @@
 
     .content-slider-btn {
         @apply text-white;
-        @apply text-body-large;
+        @apply text-base;
         @apply flex;
         @apply h-0;
         @apply opacity-0;
