@@ -1,0 +1,41 @@
+{% if section.settings.show_announcement %}
+  <section class="py-3 text-sm font-bold bg-white text-gray aeneid-grid">
+    <div class="hidden col-span-2 lg:block">
+      {{ section.settings.label }}
+    </div>
+    <div class="col-span-8 col-start-2 text-center lg:text-left lg:col-span-6">
+      {{ section.settings.content }}
+    </div>
+    <button class="col-start-10 ml-auto">
+      {% render 'icon-close' %}
+    </button>
+    <!-- TODO: make this x work -->
+    <!-- TODO: css adjust baseline -->
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show Announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Announcement Label",
+      "default": "Notice"
+    },
+    {
+      "type": "text",
+      "id": "content",
+      "label": "Announcement Text",
+      "default": "Get 10% off with code SPECIALOFFERING"
+    }
+  ]
+}
+{% endschema %}

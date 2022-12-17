@@ -1,12 +1,12 @@
-{% assign nav_link_class = 'text-body-small mr-7 py-2 uppercase hover:underline' %}
+{% assign nav_link_class = 'text-sm font-bold mr-7 py-2 uppercase hover:underline hidden lg:block' %}
 
 {% if shop.customer_accounts_enabled %}
-  <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="{{ nav_link_class }} hide">
+  <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="{{ nav_link_class }}">
     Account
   </a>
 {% endif %}
 
-<div class="{{ nav_link_class }} relative flex py-3 group/item mr-7 hide">
+<div class="{{ nav_link_class }} relative flex py-3 group/item mr-7">
   <span> EN (US) </span>
 
   <ul class="absolute hidden rounded-md group/edit top-2 lg:group-hover/item:flex">
@@ -24,7 +24,7 @@
   </ul>
 </div>
 
-<div class="{{ nav_link_class }} hide">
+<div class="{{ nav_link_class }}">
   USD $$$
 </div>
 

@@ -48,18 +48,20 @@
         @apply border;
         @apply duration-200;
     }
+
+    .aeneid-navigation {
+        @apply border-b;
+        /* @apply absolute; */
+        @apply inset-x-0;
+        @apply transition-all;
+        @apply max-h-screen;
+        @apply fixed;
+        @apply overflow-y-auto;
+        @apply z-50;
+    }
 }
 
-.aeneid-navigation {
-    @apply border-b;
-    /* @apply absolute; */
-    @apply inset-x-0;
-    @apply transition-all;
-    @apply max-h-screen;
-    @apply fixed;
-    @apply overflow-y-auto;
-    @apply z-50;
-}
+
 
 
 @layer utilities {
@@ -162,9 +164,9 @@
         @apply text-white;
     }
 
-    .header-nav-links .hide {
+    /* .header-nav-links .hide {
         @apply hidden;
-    }
+    } */
 }
 
 .pill {
