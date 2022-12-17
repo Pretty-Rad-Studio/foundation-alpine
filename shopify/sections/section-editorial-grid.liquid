@@ -1,4 +1,4 @@
-<section class="py-24 aeneid-grid border-b-[0.5px]">
+<section class="py-24  aeneid-grid border-b-[0.5px]">
   <div class="text-center col-span-full">
     <h3 class="h3-title">{{ section.settings.headline }}</h3>
   </div>
@@ -6,13 +6,14 @@
 
     <a
         href="#"
-        class="inline-flex items-center px-8 py-5 duration-200 border border-currentColor text-body-large hover:bg-white hover:text-black"
+        class="inline-flex items-center px-8 py-5 duration-200 border border-currentColor text-body-large button-hover-inverse"
       >
         View all articles
         {% render 'icon-button-arrow', class: 'ml-6' %}
       </a> 
   </div>
 </section>
+{% render 'card-group-slider-content' %}
 
 {% schema %}
 {

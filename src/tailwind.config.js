@@ -8,6 +8,7 @@ const path = require('path')
 
 module.exports = {
   theme: {
+    important: true,
     container: {
       padding: {
         default: '1rem',
@@ -78,13 +79,14 @@ module.exports = {
       transitionDuration: {
         '0': '0ms',
         '300': '300ms',
+        '500': '500ms'
       },
       textOpacity: {
         '85': '0.85',
       },
       inset: {
         '2': '2rem',
-      }
+      },
     },
     fontFamily: {
       default: ["neue-haas-grotesk-display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
