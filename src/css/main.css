@@ -57,7 +57,7 @@
         @apply max-h-screen;
         @apply fixed;
         @apply overflow-y-auto;
-        @apply z-50;
+        @apply z-40;
     }
 }
 

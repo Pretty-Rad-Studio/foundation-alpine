@@ -1,5 +1,8 @@
 {% if section.settings.show_announcement %}
-  <section class="py-3 text-sm font-bold bg-white text-gray aeneid-grid">
+
+  <section 
+    class="absolute top-0 z-50 items-center w-full h-10 overflow-hidden text-sm font-bold bg-white text-gray aeneid-grid"
+    :class="{ ' ' : pageScrolled }">
     <div class="hidden col-span-2 lg:block">
       {{ section.settings.label }}
     </div>
@@ -12,6 +15,8 @@
     <!-- TODO: make this x work -->
     <!-- TODO: css adjust baseline -->
   </section>
+
+  
 {% endif %}
 
 {% schema %}

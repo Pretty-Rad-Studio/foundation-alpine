@@ -1,23 +1,28 @@
 {% liquid 
   assign nav_class = 'navigation-white'
+  assign nav_on_scroll = 'navigation-white'
+
 
   if request.page_type == 'index'
     assign nav_class = 'navigation-transparent'
+    assign nav_on_scroll = 'navigation-white'
   endif 
 %}
 
 <header
-  class="aeneid-navigation {{ request.page_type }}"
+  class="aeneid-navigation pt-10 top-0 fixed {{ request.page_type }}"
   :class="{ 
     'navigation-black' : openNavigate, 
     'navigation-white' : !openNavigate && pageScrolled, 
-    '{{ nav_class }}' : !openNavigate && !pageScrolled 
+    '{{ nav_class }}' : !openNavigate && !pageScrolled,
+    'pt-0 {{ nav_on_scroll }}' : pageScrolled
   }"
   id="header"
   x-data="{ openNavigate: false, pageScrolled: false }"
   @click.away="openNavigate = false"
   @scroll.window="pageScrolled = (window.pageYOffset > 20) ? true : false"
 >
+  <p x-text="scroll"></p>
   <!-- TOP NAV -->
   <nav class="items-center h-16 aeneid-grid">
     <div class="col-span-3 lg:col-span-2">
