@@ -1,16 +1,16 @@
 {% assign image = section.settings.image %}
 
 <section 
-  class="flex text-white bg-center bg-no-repeat bg-cover"
+  class="relative flex h-[780px] overflow-hidden text-white bg-center bg-no-repeat bg-cover lg:h-screen"
   style="background-image: url('{{ image | img_url: '1000x' }}');">
 
   {% for block in section.blocks %}
     {% if block.type == 'collection' %}
-      <div class="basis-1/2 flex py-14 px-12 {{ block.settings.alignment }}">
-        {% render 'featured-collection-block', block: block, class: 'flex flex-col' %}
+      <div class="flex py-8 px-4 lg:basis-1/2 lg:px-12 lg:py-16 {{ block.settings.alignment }}">
+        {% render 'featured-collection-block', block: block, wrapper_class: 'w-5/6 lg:w-full' %}
       </div>
     {% else %}
-      <div class="flex-1 basis-1/2">
+      <div class="absolute inset-0 flex-1 lg:relative lg:basis-1/2">
         <img
           sizes="
             (min-width: 1536px) 1000px,

@@ -2,67 +2,81 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@layer components {
-    html {
-        @apply overflow-x-hidden;
-    }
+@layer base {
     body {
-        font-size: theme('fontSize.bodyLarge');
+        @apply text-base;
+        @apply font-medium;
         @apply overflow-x-hidden;
         @apply font-default;
         @apply antialiased;
-        @apply font-medium;
         @apply bg-white;
     }
-
-    .h1-title {
-        font-size: theme('fontSize.heading');
-        /* font-weight: theme('fontWeight.medium'); */
-        line-height: theme('lineHeight.48');
-        @apply font-bold;
-
-    }
-
-    .h3-title {
-        @apply uppercase;
-        @apply inline-block;
-        @apply border-b-[0.5px];
-        @apply pb-2;
-        /* @apply mx-auto; */
-    }
-
-    .text-body-large {
-        font-size: theme('fontSize.bodyLarge');
-        font-weight: theme('fontWeight.medium');
-        line-height: theme('lineHeight.24');
-    }
-
-    .text-body-small {
-        font-size: theme('fontSize.bodySmall');
-        @apply font-bold;
-        line-height: theme('lineHeight.16');
-    }
-
-    .text-label {
-        font-size: theme('fontSize.label');
-        @apply font-bold;
-        line-height: theme('lineHeight.12');
-    }
-
-    .aeneid-navigation {
-        @apply border-b-[0.5px];
-        @apply absolute;
-        @apply inset-x-0;
-        @apply z-50;
+    html {
+        @apply overflow-x-hidden;
     }
 }
+
+@layer components {
+    /* 
+    * 
+    * TYPOGRAPHY
+    * 
+    */
+    .type-heading {
+        @apply font-medium;
+        @apply text-lg;
+        @apply md:text-xl;
+    }
+
+    .type-label {
+        @apply font-bold;
+        @apply text-xs; 
+    }
+
+    /* 
+    * 
+    * BUTTONS
+    * 
+    */
+    .button {
+        @apply flex;
+        @apply items-center;
+        @apply justify-between;
+        @apply w-full;
+        @apply py-4;
+        @apply text-sm;
+        @apply font-bold;
+        @apply px-7;
+        @apply text-black;
+        @apply border-black;
+        @apply border;
+        @apply duration-200;
+        @apply cursor-pointer;
+    }
+    .button-hover-inverse {
+        @apply hover:bg-black;
+        @apply hover:text-white;
+    }
+}
+
+.aeneid-navigation {
+    @apply border-b;
+    /* @apply absolute; */
+    @apply inset-x-0;
+    @apply transition-all;
+    @apply max-h-screen;
+    @apply fixed;
+    @apply overflow-y-auto;
+    @apply z-50;
+}
+
 
 @layer utilities {
     .aeneid-grid {
         @apply px-4;
-        @apply md:px-12;
+        @apply lg:px-12;
         @apply gap-8;
-        @apply m-auto;
+        @apply mx-auto;
         @apply grid;
         grid-template-columns: theme('gridTemplateColumns.grid-10');
     }
@@ -102,7 +116,7 @@
     }
 
     .aeneid-pagination-nav {
-        @apply text-body-small;
+        @apply text-sm;
         @apply col-span-10;
         @apply flex;
         @apply flex-col;
@@ -141,12 +155,14 @@
     .navigation-white {
         @apply bg-white;
         @apply border-black;
+        @apply bg-opacity-100;
+
     }
 
     .navigation-transparent {
-        @apply bg-transparent;
         @apply border-white;
         @apply text-white;
+        @apply bg-opacity-0;
     }
 
     .navigation-black {
@@ -383,19 +399,16 @@
     @apply py-1;
     @apply duration-200;
     @apply rounded-full;
-    @apply text-body-small;
+    @apply text-sm;
     @apply hover:invert;
+    @apply font-bold;
 }
 
 .pill-white {
     @apply text-black;
     @apply bg-white;
 }
-/* 
-.header-logo svg {
-    @apply w-full;
-    @apply h-full;
-} */
+
 
 
 @screen md {
@@ -414,29 +427,3 @@
         grid-template-columns: theme('gridTemplateColumns.grid-10');
     }
 }
-
-/*
-*
-* BUTTONS
-*
-*/
-.button {
-    @apply flex;
-    @apply items-center;
-    @apply justify-between;
-    @apply w-full;
-    @apply py-4;
-    @apply text-body-small;
-    @apply px-7;
-    @apply text-black;
-    @apply border-black;
-    @apply border;
-    @apply duration-200;
-    @apply cursor-pointer;
-}
-
-.button-hover-inverse {
-    @apply hover:bg-black;
-    @apply hover:text-white;
-}
-

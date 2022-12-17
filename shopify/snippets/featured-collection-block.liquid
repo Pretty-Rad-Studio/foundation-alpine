@@ -1,15 +1,15 @@
 <!-- Block -->
 <div class="{{ wrapper_class }} {{ block.settings.alignment }}">
-  <h1 class="flex h1-title align-start">
+  <h1 class="flex type-heading align-start">
     {{ block.settings.collection.title | default: block.settings.title }}
     
     {% if block.settings.show_count %}
-      <span class="ml-4 text-body-large">(245)</span>
+      <span class="ml-4 text-base">(245)</span>
     {% endif %}
   </h1>
 
   {% if block.settings.description %}
-    <p class="mt-8 mb-4 text-body-large">
+    <p class="mt-8 mb-4">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
       vulputate libero et velit interdum, ac aliquet odio mattis. Class
       aptent taciti sociosqu ad litora torquent per conubia nostra, per

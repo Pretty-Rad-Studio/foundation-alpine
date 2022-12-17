@@ -1,11 +1,11 @@
 {% assign image = section.settings.image %}
 
 <section
-  class="flex items-center bg-center bg-no-repeat bg-cover hero min-h-[780px] bg-hero-pattern"
+  class="flex items-end h-[780px] bg-center bg-no-repeat bg-cover  lg:h-screen lg:pt-16 lg:items-center"
   style="background-image: url('{{ image | img_url: '1500x' }}');"
 >
-  <div class="text-white aeneid-grid">
-    <div class="col-span-4 col-start-3">
+  <div class="items-end text-white aeneid-grid">
+    <div class="py-8 col-span-full lg:col-span-4 lg:col-start-3">
       {% for block in section.blocks %}
         {% render 'featured-collection-block', block: block, class: 'flex flex-col' %}
       {% endfor %}
@@ -58,28 +58,7 @@
           "label": "Button Text",
           "default": "Shop Now",
           "info": "Leave empty to hide button"
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "options": [
-            {
-              "value": "items-start",
-              "label": "left"
-            },
-            {
-              "value": "items-center",
-              "label": "center"
-            },
-            {
-              "value": "items-end",
-              "label": "right"
-            }
-          ],
-          "default": "items-center"
         }
-
       ]
     }
   ],
