@@ -68,7 +68,8 @@
     .aeneid-grid {
         @apply px-4;
         @apply lg:px-12;
-        @apply gap-8;
+        @apply gap-4;
+        @apply lg:gap-8;
         @apply mx-auto;
         @apply grid;
         grid-template-columns: theme('gridTemplateColumns.grid-10');
