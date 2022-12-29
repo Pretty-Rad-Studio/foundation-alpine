@@ -1,10 +1,10 @@
-{{ section.settings.headline}}
+{{ section.settings.headline }}
 
 {% for block in section.blocks %}
     {% render 'section-image',
         class: ''
         image: block.settings.image
-      %}
+    %}
 
     {{ block.settings.headline | default:block.settings.collection.title }}
     {{ block.settings.subtext }}
