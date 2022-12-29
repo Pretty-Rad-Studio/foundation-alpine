@@ -1,7 +1,19 @@
-{{ section.settings.collection1}}
+{{ section.settings.headline}}
+
+{% for block in section.blocks %}
+    {% render 'section-image',
+        class: ''
+        image: block.settings.image
+      %}
+
+    {{ block.settings.headline | default:block.settings.collection.title }}
+    {{ block.settings.subtext }}
+    
+    <a href="{{ block.settings.collection.url }}">{{ block.settings.label | default: 'Shop Now' }}</a>
+{% endfor %}
 
 
-  {% schema %}
+{% schema %}
   {
     "name": "Collection Slider",
     "settings": [
@@ -10,30 +22,41 @@
         "id": "headline",
         "label": "t:common.text",
         "default": "Featured Collections"
-      },
-      {
-        "type": "collection",
-        "id": "collection1",
-        "label": "t:common.collection"
-      },
-      {
-        "type": "collection",
-        "id": "collection2",
-        "label": "t:common.collection"
-      },
-      {
-        "type": "collection",
-        "id": "collection3",
-        "label": "t:common.collection"
-      },      {
-        "type": "collection",
-        "id": "collection4",
-        "label": "t:common.collection"
-      },      {
-        "type": "collection",
-        "id": "collection5",
-        "label": "t:common.collection"
       }
+    ],
+    "blocks": [
+        {
+          "type": "image",
+          "name": "Collection",
+          "limit": 10,
+          "settings": [
+              {
+                "type": "collection",
+                "id": "collection",
+                "label": "Collection"
+            },
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "headline",
+                "label": "t:common.text"
+            },
+            {
+                "type": "text",
+                "id": "subtext",
+                "label": "Subtext"
+            },
+            {
+                "type": "text",
+                "id": "label",
+                "label": "Button Label"
+            }
+          ]
+        }
     ],
     "presets": [
       {
