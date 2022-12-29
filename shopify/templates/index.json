@@ -10,8 +10,7 @@
             "show_count": true,
             "title": "New Arrivals",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc\n        vulputate libero et velit interdum, ac aliquet odio mattis. Class\n        aptent taciti sociosqu ad litora torquent per conubia nostra, per\n        inceptos himenaeos.",
-            "button": "Shop Now",
-            "alignment": "items-start"
+            "button": "Shop Now"
           }
         }
       },
@@ -19,7 +18,7 @@
         "f8ab42c8-aa9a-4586-a0d5-acfff78955f5"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/dark-dj-set.jpg"
+        "image": "shopify:\/\/shop_images\/street-tunnel-at-night.jpg"
       }
     },
     "b9c0de25-d238-4299-b8fc-4442449a3c9b": {
@@ -28,13 +27,13 @@
         "0b4d8fdd-0094-442a-be28-d139df3af286": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/c4f0455c50e07f9125f9a844b333b7f5.png"
+            "image": "shopify:\/\/shop_images\/c4f0455c50e07f9125f9a844b333b7f5_1000x_76fd7de3-2250-4d60-b22e-5366f7811b2c.png"
           }
         },
         "265bac78-116b-4f76-b86f-4ac6e6b20599": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "frontpage",
             "show_count": true,
             "title": "New Arrivals",
             "description": "",
@@ -48,7 +47,7 @@
         "265bac78-116b-4f76-b86f-4ac6e6b20599"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/9bda942f8c00452d43903dce89e12b2d.png"
+        "image": "shopify:\/\/shop_images\/man-in-dark-denim-and-fashion-sneakers-sitting-on-stairwell.jpg"
       }
     },
     "88856741-cffa-44a4-b1a8-edc874b86b3e": {
@@ -61,14 +60,16 @@
       "type": "section-collection",
       "settings": {
         "headline": "Selected products",
-        "collection_featured": "all",
+        "collection_featured": "frontpage",
         "collection_products_limit": "4"
       }
     },
     "style": {
-      "type": "section-style"
+      "type": "section-style",
+      "disabled": true,
+      "settings": {
+      }
     }
-
   },
   "order": [
     "b89d81ec-709e-44ff-816a-0e47183b9aeb",
