@@ -35,7 +35,8 @@
       {% endcomment %}
       {% render 'template-captcha' %}
     {% else %}
-      <div id="app">
+  
+        {% section 'announcement' %}
         {% section 'layout-header' %}
 
         <main class="{% if request.page_type != 'index' %}pt-16{% endif %}" id="main" role="main">
@@ -43,7 +44,7 @@
         </main>
 
         {% section 'layout-footer' %}
-      </div>
+     
     {% endif %}
 
     <!-- webpack bundle -->
