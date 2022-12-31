@@ -33,7 +33,7 @@
 </section>
 
 {% comment %} Container Products {% endcomment %}
-<div class="grid  grid-cols-product-greed-3 lg:aeneid-grid">
+<div class="grid  grid-cols-product-greed-3 lg:aeneid-grid pb-48">
   {% for i in (0..20) %}
     {% comment %} Product item {% endcomment %}
     <div class="aspect-product col-span-1 lg:col-span-2 2xl:col-span-1 group relative hover:cursor-pointer">
@@ -74,7 +74,41 @@
 </div>
 
 
-{% comment %}  {% endcomment %}
+{% comment %} FEATURE COLLECTIONS {% endcomment %}
+<div>
+  <h2>FEATURED COLLECTIONS</h2>
+</div>
+
+
+{% comment %} NEWSLETTER {% endcomment %}
+<div class="relative py-36 flex gap-8 flex-col justify-center items-center bg-black bg-no-repeat bg-cover bg-center" style="background-image: url(https://plus.unsplash.com/premium_photo-1669135330361-4f8a363dbefe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);">
+  {% comment %} Background opacity {% endcomment %}
+  <div class="absolute inset-0 bg-black/30"></div>
+
+  {% comment %} content {% endcomment %}
+  <div class="w-64 text-center text-white z-10">
+    <h2 class="capitalize pb-4">Newsletter</h2>
+    <p>SIGN UP FOR THE LATEST ON NEW PRODUCTS, RECIPES, EVENTS, AND MUCH MORE ...</p>
+  </div>
+
+  {% comment %} Form {% endcomment %}
+  <form class="flex z-10">
+    <div class="px-8 border border-white text-white">
+      {% comment %} create input text with label {% endcomment %}
+      <label for="email" class="uppercase text-sm mr-8">Email</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Your email address"
+        class="py-4 w-60 bg-transparent placeholder:text-white/30 outline-none">
+    </div>
+    <button type="submit" class="px-8 py-4 border border-white border-l-transparent text-sm text-white hover:bg-white hover:text-black transition-colors ease-out">
+      SEND
+    </button>
+  </form>
+
+</div>
 
 {% schema %}
   {
