@@ -79,6 +79,9 @@ module.exports = {
       default: ["neue-haas-grotesk-display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
     },
     extend: {
+      aspectRatio:{
+        'product' : "4 / 5"
+      },
       transitionProperty: {
         'backgroundColor': 'background',
         'opacity': 'opacity',

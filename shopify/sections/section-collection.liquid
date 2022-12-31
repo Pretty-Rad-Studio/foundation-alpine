@@ -1,7 +1,8 @@
-<section class="border-b py-14 lg:py-24 aeneid-grid">
+<section class="py-14 lg:py-24 aeneid-grid">
   <div class="col-span-full lg:col-span-2">
     <div class="flex items-center text-sm font-bold text-black">
-      <a href="#" class="pr-1 lg:pl-3">HOME</a> /<a href="#" class="pl-1 pr-1">New Arrivals</a>
+      <a href="#" class="pr-1 lg:pl-3">HOME</a>
+      /<a href="#" class="pl-1 pr-1">New Arrivals</a>
     </div>
   </div>
 
@@ -13,61 +14,101 @@
 
     {% if section.settings.collection_featured.description %}
       <p class="my-4 lg:mt-8 ">
-      {{ section.settings.collection_featured.description }}
+        {{ section.settings.collection_featured.description }}
       </p>
     {% endif %}
   </div>
 
   <div class="col-span-5 lg:col-span-2">
-    <button class="button">
+    <button class="button capitalize">
       SHOW FILTERS
     </button>
   </div>
-  
+
   <div class="col-span-5 lg:col-span-2">
-    <button class="button">
-      SHOW FILTERS
+    <button class="button capitalize">
+      SORT BY
     </button>
   </div>
 </section>
 
+{% comment %} Container Products {% endcomment %}
+<div class="grid  grid-cols-product-greed-3 lg:aeneid-grid">
+  {% for i in (0..20) %}
+    {% comment %} Product item {% endcomment %}
+    <div class="aspect-product group relative hover:cursor-pointer">
+      {% comment %} Image Product {% endcomment %}
+      <img
+      class="opacity-100 group-hover:opacity-0 w-full h-full object-cover object-center transition-opacity ease-out"
+        width="105"
+        height="132"
+        src="https://aws-s3-devchallenges-image-upload.s3.ap-northeast-1.amazonaws.com/uploads/910044c1-ab33-420e-a1b2-dcb75ba44654-Aspect Ratio=4_5, Loading=No.png"
+        loading="lazy"
+        alt="image product">
+
+      {% comment %} Hover content {% endcomment %}
+      <div class="opacity-0 group-hover:opacity-100  absolute top-0 flex p-2 h-full flex-col justify-between font-bold transition-opacity ease-out">
+        <h3 class="uppercase">Our legacy green  oxford shirt</h3>
+        <div>
+          <p>125 USD</p>
+
+          {% comment %} Star productICON ) {% endcomment %}
+          {% comment %} TODO:CHANGE ICONS TO STAR/STAR-CLOSE ICON  {% endcomment %}
+          <div class="flex w-full justify-between">
+            {% comment %} {% assign stars = 5} {% endcomment %}
+            {% comment %} Generate random number for preview {% endcomment %}
+            {% assign stars = "now" | date: "%N" | modulo: 5 %}
+              {% for i in (1..5) %}
+                {% if i <= stars %}
+                {% render 'icon-menu' %}
+              {% else %}
+                <span class="opacity-50">
+                  {% render 'icon-menu' %}
+                </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+</div>
+
 {% schema %}
-{
-  "name": "t:sections.collection.name",
-  "settings": [
-    {
-      "type": "text",
-      "id": "headline",
-      "label": "t:common.text",
-      "default": "Selected products"
-    },
-    {
-      "type": "collection",
-      "id": "collection_featured",
-      "label": "t:common.collection"
-    },
-    {
-      "type": "select",
-      "id": "collection_products_limit",
-      "label": "t:sections.collection.settings.max-products-to-display",
-      "default": "4",
-      "options": [
-        {
-          "value": "4",
-          "label": "t:sections.collection.settings.4-products"
-        },
-        {
-          "value": "8",
-          "label": "t:sections.collection.settings.8-products"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "t:sections.collection.name",
-      "category": "Collection"
-    }
-  ]
-}
+  {
+    "name": "t:sections.collection.name",
+    "settings": [
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "t:common.text",
+        "default": "Selected products"
+      }, {
+        "type": "collection",
+        "id": "collection_featured",
+        "label": "t:common.collection"
+      }, {
+        "type": "select",
+        "id": "collection_products_limit",
+        "label": "t:sections.collection.settings.max-products-to-display",
+        "default": "4",
+        "options": [
+          {
+            "value": "4",
+            "label": "t:sections.collection.settings.4-products"
+          }, {
+            "value": "8",
+            "label": "t:sections.collection.settings.8-products"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "t:sections.collection.name",
+        "category": "Collection"
+      }
+    ]
+  }
 {% endschema %}
