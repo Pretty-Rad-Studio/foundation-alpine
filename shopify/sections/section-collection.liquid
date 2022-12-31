@@ -1,14 +1,14 @@
 <section class="border-b py-14 lg:py-24 aeneid-grid">
   <div class="col-span-full lg:col-span-2">
     <div class="flex items-center text-sm font-bold text-black">
-      <a href="#" class="pr-1 lg:pl-3">HOME</a> /<a href="#" class="pl-1 pr-1">{{ section.settings.collection_featured.title }}</a>
+      <a href="#" class="pr-1 lg:pl-3">HOME</a> /<a href="#" class="pl-1 pr-1">New Arrivals</a>
     </div>
   </div>
 
   <div class="col-span-full lg:col-span-4">
     <h2 class="flex text-xl align-start">
-      {{ section.settings.headline | default:section.settings.collection_featured.title }}
-      <span class="ml-4 text-base">({{ section.settings.collection_featured.products | size }})</span>
+      {{ section.settings.collection_featured.title }}
+      <span class="ml-4 text-base">({{ section.settings.collection_featured | size }})</span>
     </h2>
 
     {% if section.settings.collection_featured.description %}
@@ -31,53 +31,6 @@
   </div>
 </section>
 
-
-
-<div class="container">
-  {% paginate section.settings.collection_featured.products by 50 %}
-    {% if section.settings.collection_featured and section.settings.collection_featured.products %}
-      {% assign amount = section.settings.collection_featured.all_products_count %}
-      {% comment %} {% render 'layout-sort-bar', amount: amount class: 'mb-8' %} {% endcomment %}
-
-
-      <div class="px-4 m-auto md:px-12">
-        <div
-          class="gap-2 grid-cols-grid-6 aeneid-product-greed lg:grid-cols-grid-10 md:gap-4 lg:gap-8">
-          {% for product in section.settings.collection_featured.products %}
-            {% assign current_variant = product.selected_or_first_available_variant %}
-            {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-
-
-            <div class="border">
-              {{ product.title }}
-
-              {% render 'section-image',
-                class: ''
-                image: featured_image
-              %}
-
-              {{ current_variant.price | money }}
-              
-              {{ current_variant.available }}
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-
-      {% comment %} <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
-        {% for product in collection.products %}
-          {% render 'layout-product', product: product %}
-        {% endfor %}
-      </div> {% endcomment %}
-    {% else %}
-      <div>
-        {{ 'common.no_products' | t }}
-      </div>
-    {% endif %}
-
-    {% render 'layout-pagination', paginate: paginate %}
-  {% endpaginate %}
-</div>
 {% schema %}
 {
   "name": "t:sections.collection.name",
@@ -92,6 +45,22 @@
       "type": "collection",
       "id": "collection_featured",
       "label": "t:common.collection"
+    },
+    {
+      "type": "select",
+      "id": "collection_products_limit",
+      "label": "t:sections.collection.settings.max-products-to-display",
+      "default": "4",
+      "options": [
+        {
+          "value": "4",
+          "label": "t:sections.collection.settings.4-products"
+        },
+        {
+          "value": "8",
+          "label": "t:sections.collection.settings.8-products"
+        }
+      ]
     }
   ],
   "presets": [
