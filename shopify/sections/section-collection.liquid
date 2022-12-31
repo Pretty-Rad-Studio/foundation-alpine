@@ -36,10 +36,9 @@
 <div class="grid  grid-cols-product-greed-3 lg:aeneid-grid">
   {% for i in (0..20) %}
     {% comment %} Product item {% endcomment %}
-    <div class="aspect-product group relative hover:cursor-pointer">
+    <div class="aspect-product col-span-1 lg:col-span-2 2xl:col-span-1 group relative hover:cursor-pointer">
       {% comment %} Image Product {% endcomment %}
-      <img
-      class="opacity-100 group-hover:opacity-0 w-full h-full object-cover object-center transition-opacity ease-out"
+      <img class="opacity-100 group-hover:opacity-0 w-full h-full object-cover object-center transition-opacity ease-out"
         width="105"
         height="132"
         src="https://aws-s3-devchallenges-image-upload.s3.ap-northeast-1.amazonaws.com/uploads/910044c1-ab33-420e-a1b2-dcb75ba44654-Aspect Ratio=4_5, Loading=No.png"
@@ -55,11 +54,10 @@
           {% comment %} Star productICON ) {% endcomment %}
           {% comment %} TODO:CHANGE ICONS TO STAR/STAR-CLOSE ICON  {% endcomment %}
           <div class="flex w-full justify-between">
-            {% comment %} {% assign stars = 5} {% endcomment %}
             {% comment %} Generate random number for preview {% endcomment %}
             {% assign stars = "now" | date: "%N" | modulo: 5 %}
-              {% for i in (1..5) %}
-                {% if i <= stars %}
+            {% for i in (1..5) %}
+              {% if i <= stars %}
                 {% render 'icon-menu' %}
               {% else %}
                 <span class="opacity-50">
@@ -74,6 +72,9 @@
 
   {% endfor %}
 </div>
+
+
+{% comment %}  {% endcomment %}
 
 {% schema %}
   {
